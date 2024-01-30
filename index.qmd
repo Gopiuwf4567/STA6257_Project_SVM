@@ -1,7 +1,7 @@
 ---
 title: "SVM Report - Data Science Capstone"
 author: "Gopi Shankar Reddy"
-date: '`r Sys.Date()`'
+date: 'today'
 format:
   html:
     code-fold: true
