@@ -19,87 +19,126 @@ editor:
 
 ## Introduction
 
-### What is "method"?
+### Support Vector Machines.
 
-This is an introduction to Kernel regression, which is a non-parametric
-estimator that estimates the conditional expectation of two variables
-which is random. The goal of a kernel regression is to discover the
-non-linear relationship between two random variables. To discover the
-non-linear relationship, kernel estimator or kernel smoothing is the
-main method to estimate the curve for non-parametric statistics. In
-kernel estimator, weight function is known as kernel function
-[@efr2008]. Cite this paper [@bro2014principal]. The GEE [@wang2014].
+Support Vector Machines (SVMs) are a type of supervised learning
+algorithm that can be used for classification or regression tasks. The
+main idea behind SVMs is to find a hyperplane that maximally separates
+the different classes in the training data. This is done by finding the
+hyperplane that has the largest margin, which is defined as the distance
+between the hyperplane and the closest data points from each class. Once
+the hyperplane is determined, new data can be classified by determining
+on which side of the hyperplane it falls. SVMs are particularly useful
+when the data has many features, and/or when there is a clear margin of
+separation in the data.
 
-This is my work and I want to add more work...
+![](images/clipboard-4268047144.png)
 
-### Related work
+Hyperplanes are decision boundaries that help classify the data points.
+Data points falling on either side of the hyperplane can be attributed
+to different classes. Also, the dimension of the hyperplane depends upon
+the number of features. If the number of input features is 2, then the
+hyperplane is just a line. If the number of input features is 3, then
+the hyperplane becomes a two-dimensional plane. It becomes difficult to
+imagine when the number of features exceeds 3.
 
-This section is going to cover the literature review...
+![](images/clipboard-4038275398.png)
 
-## Methods
+Continue
 
-The common non-parametric regression model is
-$Y_i = m(X_i) + \varepsilon_i$, where $Y_i$ can be defined as the sum of
-the regression function value $m(x)$ for $X_i$. Here $m(x)$ is unknown
-and $\varepsilon_i$ some errors. With the help of this definition, we
-can create the estimation for local averaging i.e. $m(x)$ can be
-estimated with the product of $Y_i$ average and $X_i$ is near to $x$. In
-other words, this means that we are discovering the line through the
-data points with the help of surrounding data points. The estimation
-formula is printed below [@R-base]:
+### SVM A Comprehensive Synthesis of Current Research and Future Directions.
 
-$$
-M_n(x) = \sum_{i=1}^{n} W_n (X_i) Y_i  \tag{1}
-$$ $W_n(x)$ is the sum of weights that belongs to all real numbers.
-Weights are positive numbers and small if $X_i$ is far from $x$.
+1.  **Early Prediction of Dementia Using Feature Extraction Battery(FEB)
+    and Optimized Support Vector Machine (SVM) for Classification**
 
-Another equation:
+    The research focuses on early dementia prediction using machine
+    learning (ML), specifically the optimized support vector machine
+    (SVM) FEB-SVM model. The study addresses the limitations of existing
+    ML models by adding Adaptive Synthetic Sampling (ADASYN) bias and
+    introduces new feature extraction (FEB) techniques to improve
+    accuracy. The data is collected from the Swedish National Survey on
+    Aging and Care (SNAC), and the accuracy of the proposed FEB-SVM
+    model is 6% better than the traditional SVM. The model is trained on
+    a dataset of 726 participants, showing 98.28% training accuracy and
+    93.92% testing accuracy. The study outperforms 12 state-of-the-art
+    ML models in predicting dementia, demonstrating its effectiveness in
+    early diagnosis. The methodology includes data processing, feature
+    extraction using LDA, ICA, PCA, LLE, and t-SNE, unbalanced class
+    treatment using ADASYN, and SVM hyperparameter optimization using
+    grid search.
 
-$$
-y_i = \beta_0 + \beta_1 X_1 +\varepsilon_i
-$$
+2.  **New incremental SVM algorithms for human activity recognition in
+    smart homes**
 
-## Analysis and Results
+    The paper introduces incremental SVM methods that improve the
+    classification performance of SVM in the context of smart home human
+    activity detection. Two characteristic extraction techniques are
+    proposed: refining dependent sensor extraction and focusing on the
+    last sensor event. Additional SVM methods include a cluster-based
+    approach (IncSucc) to remove redundant information from new pieces
+    and a similarity-based approach to identify and reject support
+    vectors and new strong similarities. Simulations on Aruba and Tulum
+    datasets show the feasibility and improvement of the proposed
+    methods in real-time learning and classification, and
+    similarity-based incremental learning is significantly faster. This
+    approach also addresses the challenge of reducing data and support
+    vectors incrementally for efficient model development.
 
-### Data and Visualization
+3.  **A credit risk assessment model based on SVM for small and medium
+    enterprises in supply chain finance**
 
-A study was conducted to determine how...
+    Supply Chain Finance (SCF) is the field in which financial services
+    providers assist customers and suppliers in managing their working
+    capital. Leading supply chain companies in this system ensure
+    financing for Small and Medium Businesses (SMEs). This study
+    suggests an index method that takes into account the credit standing
+    of major corporations and their links with small and medium-sized
+    firms in order to evaluate credit risks in SCF. Support Vector
+    Machine (SVM) and BP Neural Network-based credit risk models are
+    contrasted. More accurate assessments of SME credit risk by banks
+    and the possibility of loosening lending limitations on SMEs are
+    made possible by the higher efficiency of the SVM model. In general,
+    the SVM model and the SCF credit risk assessment index system
+    provide banks with the best possible combination for assessing the
+    credit risk of SMEs.
 
-```{r, warning=FALSE, echo=T, message=FALSE}
-# loading packages 
-library(tidyverse)
-library(knitr)
-library(ggthemes)
-library(ggrepel)
-library(dslabs)
-```
+4.  **Multi-disease prediction model using improved SVM-radial bias
+    technique in healthcare monitoring system**
 
-```{r, warning=FALSE, echo=TRUE}
-# Load Data
-kable(head(murders))
-
-ggplot1 = murders %>% ggplot(mapping = aes(x=population/10^6, y=total)) 
-
-  ggplot1 + geom_point(aes(col=region), size = 4) +
-  geom_text_repel(aes(label=abb)) +
-  scale_x_log10() +
-  scale_y_log10() +
-  geom_smooth(formula = "y~x", method=lm,se = F)+
-  xlab("Populations in millions (log10 scale)") + 
-  ylab("Total number of murders (log10 scale)") +
-  ggtitle("US Gun Murders in 2010") +
-  scale_color_discrete(name = "Region")+
-      theme_bw()
-  
-
-```
-
-### Statistical Modeling
-
-```{r}
-
-```
-
-### Conclusion
+    This work focuses on using machine learning to predict diseases in
+    the healthcare sector, specifically using the enhanced SVM-Radial
+    bias kernel approach. In an era where information is extremely
+    valuable, the healthcare industry produces a lot of data that
+    includes patient information and disease-related data. By analyzing
+    this vast amount of medical data, the suggested generic architecture
+    aims to reveal underlying illness patterns and enable personalized
+    treatment. Particularly, a fewer number of attributes from datasets
+    on diabetes, heart disease, and chronic kidney disease were tested
+    in this study. The enhanced SVM-Radial bias kernel method
+    outperformed other machine learning approaches in R studio,
+    including SVM-Linear, SVM-Polynomial, Random Forest, and Decision
+    Tree. Notably, for the datasets on chronic kidney disease, diabetes,
+    and heart disease, respectively, this approach showed astounding
+    accuracy rates of 98.3%, 98.7%, and 89.9%. The results mentioned
+    above highlight the effectiveness of support vector machines (SVM)
+    in personalized healthcare and disease prediction.
 
 ## References
+
+1.  Javeed, A. et al. (2023) Early prediction of dementia using feature
+    Extraction Battery (FEB) and optimized support vector machine (SVM)
+    for Classification, MDPI. Available at:
+    https://www.mdpi.com/2227-9059/11/2/439 (Accessed: 22 January 2024).
+2.  Nawal, Y., Oussalah, M., Fergani, B., & Fleury, A. (2022). New
+    incremental SVM algorithms for human activity recognition in smart
+    homes. Journal of Ambient Intelligence and Humanized Computing.
+    https://doi.org/10.1007/s12652-022-03798-w
+3.  Zhang, L., Hu, H., & Zhang, D. (2015). A credit risk assessment
+    model based on SVM for small and medium enterprises in supply chain
+    finance. *Financial Innovation*, *1*(1).
+    <https://doi.org/10.1186/s40854-015-0014-5>
+4.  Harimoorthy, K., Thangavelu, M. RETRACTED ARTICLE: Multi-disease
+    prediction model using improved SVM-radial bias technique in
+    healthcare monitoring system. *J Ambient Intell Human
+    Comput* **12**, 3715–3723 (2021).
+    https://doi.org/10.1007/s12652-019-01652-0
