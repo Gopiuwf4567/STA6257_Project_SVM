@@ -189,7 +189,7 @@ how widely it is used to produce high-quality items with economical
 predictions. The study emphasizes SVM's function as a flexible and
 trustworthy modeling approach in the developing field of machining.
 
-**USING SVM With FINANCIAL STATEMENT ANALYSIS FOR PREDECTION OF STOCKS**
+**Using SVM with Financial Statement Analysis for Prediction of Stocks**
 
 The paper introduces a method for stock market prediction using Support
 Vector Machines (SVM) combined with financial statement analysis. Unlike
@@ -209,8 +209,8 @@ relevant items for analysis based on their specific needs, as the first
 module primarily reflects the accuracy rate of professionals and experts
 rather than addressing stockholders' analyses.
 
-**SENTIMENT ANALYSIS ONLINE SHOP ON THE PLAY STORE USING METHOD SUPPORT
-VECTOR MACHINE (SVM)**
+**Sentiment Analysis Online Shop On The Play Store Using Method Support
+Vector Machine (SVM)**
 
 The article discusses the increasing prevalence of online shopping and
 its impact on companies, emphasizing the importance of understanding
