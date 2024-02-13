@@ -44,154 +44,571 @@ imagine when the number of features exceeds 3.
 
 ![](images/clipboard-4038275398.png)
 
-Continue
+### **Mathematical Intuition of Support Vector Machine**
 
-### SVM A Comprehensive Synthesis of Current Research and Future Directions.
+Consider a binary classification task where there are two classes,
+denoted by the labels +1 and -1. The input feature vectors (X) and the
+matching class labels (Y) comprise our training dataset.
 
-1.  **Early Prediction of Dementia Using Feature Extraction Battery(FEB)
-    and Optimized Support Vector Machine (SVM) for Classification**
+Equation for hyperplane can be written as:
 
-    The research focuses on early dementia prediction using machine
-    learning (ML), specifically the optimized support vector machine
-    (SVM) FEB-SVM model. The study addresses the limitations of existing
-    ML models by adding Adaptive Synthetic Sampling (ADASYN) bias and
-    introduces new feature extraction (FEB) techniques to improve
-    accuracy. The data is collected from the Swedish National Survey on
-    Aging and Care (SNAC), and the accuracy of the proposed FEB-SVM
-    model is 6% better than the traditional SVM. The model is trained on
-    a dataset of 726 participants, showing 98.28% training accuracy and
-    93.92% testing accuracy. The study outperforms 12 state-of-the-art
-    ML models in predicting dementia, demonstrating its effectiveness in
-    early diagnosis. The methodology includes data processing, feature
-    extraction using LDA, ICA, PCA, LLE, and t-SNE, unbalanced class
-    treatment using ADASYN, and SVM hyperparameter optimization using
-    grid search.
+$w^Tx+b=0$
 
-2.  **New incremental SVM algorithms for human activity recognition in
-    smart homes**
+The vector W represents the normal vector to the hyperplane. i.e the
+direction perpendicular to the hyperplane. The parameter **b** in the
+equation represents the offset or distance of the hyperplane from the
+origin along the normal vector **w**.
 
-    The paper introduces incremental SVM methods that improve the
-    classification performance of SVM in the context of smart home human
-    activity detection. Two characteristic extraction techniques are
-    proposed: refining dependent sensor extraction and focusing on the
-    last sensor event. Additional SVM methods include a cluster-based
-    approach (IncSucc) to remove redundant information from new pieces
-    and a similarity-based approach to identify and reject support
-    vectors and new strong similarities. Simulations on Aruba and Tulum
-    datasets show the feasibility and improvement of the proposed
-    methods in real-time learning and classification, and
-    similarity-based incremental learning is significantly faster. This
-    approach also addresses the challenge of reducing data and support
-    vectors incrementally for efficient model development.
+$d_i = \frac{w^Tx_i + b}{\|w\|}$
 
-3.  **A credit risk assessment model based on SVM for small and medium
-    enterprises in supply chain finance**
+where \|\|w\|\| represents the Euclidean norm of the weight vector w.
+Euclidean norm of the normal vector W
 
-    Supply Chain Finance (SCF) is the field in which financial services
-    providers assist customers and suppliers in managing their working
-    capital. Leading supply chain companies in this system ensure
-    financing for Small and Medium Businesses (SMEs). This study
-    suggests an index method that takes into account the credit standing
-    of major corporations and their links with small and medium-sized
-    firms in order to evaluate credit risks in SCF. Support Vector
-    Machine (SVM) and BP Neural Network-based credit risk models are
-    contrasted. More accurate assessments of SME credit risk by banks
-    and the possibility of loosening lending limitations on SMEs are
-    made possible by the higher efficiency of the SVM model. In general,
-    the SVM model and the SCF credit risk assessment index system
-    provide banks with the best possible combination for assessing the
-    credit risk of SMEs.
+$\hat{y} =\begin{cases} 0 & \text{if } w^T x + b \geq 0 \\ 1 & \text{if } w^T x + b < 0 \end{cases}$
 
-4.  **Multi-disease prediction model using improved SVM-radial bias
-    technique in healthcare monitoring system**
+### kernel function in SVM
 
-    This work focuses on using machine learning to predict diseases in
-    the healthcare sector, specifically using the enhanced SVM-Radial
-    bias kernel approach. In an era where information is extremely
-    valuable, the healthcare industry produces a lot of data that
-    includes patient information and disease-related data. By analyzing
-    this vast amount of medical data, the suggested generic architecture
-    aims to reveal underlying illness patterns and enable personalized
-    treatment. Particularly, a fewer number of attributes from datasets
-    on diabetes, heart disease, and chronic kidney disease were tested
-    in this study. The enhanced SVM-Radial bias kernel method
-    outperformed other machine learning approaches in R studio,
-    including SVM-Linear, SVM-Polynomial, Random Forest, and Decision
-    Tree. Notably, for the datasets on chronic kidney disease, diabetes,
-    and heart disease, respectively, this approach showed astounding
-    accuracy rates of 98.3%, 98.7%, and 89.9%. The results mentioned
-    above highlight the effectiveness of support vector machines (SVM)
-    in personalized healthcare and disease prediction.
+SVM kernel is a function that takes low-dimensional input space and
+transforms it into higher-dimensional space, ie it converts nonseparable
+problems to separable problems. It is mostly useful in non-linear
+separation problems. Simply put the kernel, does some extremely complex
+data transformations and then finds out the process to separate the data
+based on the labels or outputs defined.
 
-5.  **Verifiable and Secure SVM Classification for Cloud-Based Health
-    Monitoring Services**
+$Linear : K(w,b)=w^Tx+b$
 
-    The paper discusses the challenges in medical services costs due to
-    the increasing prevalence of chronic diseases and aging populations.
-    It explores the use of artificial intelligence and wearable devices
-    in health monitoring services provided by medical institutions,
-    often employing support vector machine (SVM) classification
-    techniques for real-time medical decisions. The introduction of
-    cloud-based health monitoring services raises privacy concerns,
-    particularly regarding potential malicious behavior by the cloud
-    server. The proposed solution, VSSVMC, presents a verifiable and
-    secure SVM classification scheme tailored for cloud-based health
-    monitoring services under a malicious threat model. It ensures
-    decision verifiability and data confidentiality through the
-    integration of pseudorandom permutations, pseudorandom functions,
-    and symmetric key encryption, addressing a more robust threat model
-    compared to existing schemes. The article provides formal proofs for
-    the security, verifiability, and efficiency of VSSVMC, demonstrating
-    competitive performance in computation, communication, and storage
-    costs through experimental evaluations on the
-    Breast-Cancer-Wisconsin dataset. Notably, VSSVMC achieves O(1)
-    computational complexity, microsecond execution time, and minimal
-    communication and storage costs, positioning it as a promising
-    solution for trustworthy and privacy-preserving cloud-based health
-    monitoring services.
+## Literature Review
 
-6.  **Efficient Medical Diagnosis of Human Heart Diseases Using Machine
-    Learning Techniques With and Without GridSearchCV**
+**Tutorial on Support Vector Machine (SVM)**
 
-    This research aims to develop an intuitive medical prediction system
-    for early detection of heart disease using modern machine learning
-    techniques. Various classifier algorithms, including logistic
-    regression, K-nearest neighbors, support vector machine, and
-    Gradient Boosting Classifier with and without GridSearchCV, were
-    trained and compared for optimal heart disease detection. Four model
-    selection strategies, including correlation-based feature subset
-    evaluator and Gradient Boosting Classifier with GridSearchCV, were
-    employed to identify attributes influencing classifier performance.
-    The Extreme Gradient Boosting Classifier with GridSearchCV exhibited
-    the highest accuracy (100% and 99.03%) across different datasets.
-    The study evaluates performance indicators such as accuracy, recall,
-    precision, and F1-Score, comparing results with previous cardiac
-    prediction studies.
+The author gives an introduction to Support Vector Machines (SVM) like
+its mathematical foundation and practical uses. SVMs are presented as a
+collection of supervised learning techniques for regression and
+classification. The course explores the mathematical support of support
+vector machines (SVM), giving ideas like structural risk minimization,
+maximum margin classifier, and SVM formulation for linear scenarios. It
+emphasizes how important SVM is for tasks involving pattern recognition
+and how it may be extended to solve regression issues. Important SVM
+topics including statistical learning theory, generalization, and the
+kernel trick are also covered in the session. The author talks about how
+kernels help SVM handle non-linear boundaries by converting input data
+into a high-dimensional feature space. Numerous kernel functions are
+investigated, such as the polynomial, multi-layer perceptron,
+exponential, and Gaussian radial basis functions. The last section
+covers the uses of SVM in regression and classification, highlighting
+how well it works in pattern classification scenarios and how well it
+can handle high-dimensional data. SVM's advantages and disadvantages are
+discussed, with an emphasis on its scalability, training simplicity, and
+the significance of choosing the right kernel function.
+
+**Support Vector Machines - An Introduction**
+
+The text provides an introduction to Support Vector Machines (SVMs),
+authored by V. Kecmanfrom The University of Auckland. The emphasis is on
+using SVMs, or kernel machines, to learn from empirical data. The goal
+of the introduction is to methodically introduce the unique SVM learning
+paradigm, with a focus on constructive learning algorithms for both
+regression and classification, The method uses learning based on
+quadratic programming to produce parsimonious SVMs with few support
+vectors. Similar to neural networks, SVMs are emphasized as universal
+multivariate function approximators, which makes them especially useful
+for modeling extremely complex and nonlinear systems. The essay
+emphasizes the evolution of SVMs throughout time, pointing out that
+early doubts were dispelled by real-world achievements in text
+classification, computer vision, and digit identification, In a
+supervised learning context, the learning problem setting for Support
+Vector Machines (SVMs) entails an uncertain and nonlinear relationship
+between high-dimensional input vectors and scalar or vector outputs.
+The distribution-free learning methodology of SVMs is highlighted by
+outlining the distinctions between SVM training assumptions and
+traditional statistical inference.
+
+**SVM Classification: It's Contents and Challenges**
+
+The text covers key aspects of SVM, like theoretical motivation,
+application areas, and development trends.With a focus on
+classification, the paper presents an overview of Support Vector
+Machines (SVMs) in machine learning. Because of their strong theoretical
+base and high generalization performance, support vector machines (SVMs)
+have become increasingly popular for tasks involving classification,
+regression, or novelty detection. Important ideas including structural
+risk minimization, multi-class classification, training support vector
+machines. and linear and nonlinear decision surfaces are covered in this
+work. It draws attention to certain characteristics of SVMs, such as
+solution uniqueness and sparsity. We talk about the difficulties in
+using nonlinear support vector machines (SVMs), including their
+computational cost and kernel function.
+
+**The Development and Application of Support Vector Machine**
+
+The article gives an introduction to the Support Vector Machine (SVM)
+method, highlighting its benefits, fundamental ideas, and uses in face
+identification, protein prediction, and contemporary machining. It
+explores the theoretical underpinnings of support vector machines (SVM),
+going over ideas like kernel functions and hard and soft margins. The
+application sections show off effective SVM implementations across a
+range of disciplines, demonstrating its effectiveness in face detection,
+protein type prediction, and bearing defect diagnostics. The paper
+highlights the adaptability and generalization power of SVM while also
+pointing out some of its possible drawbacks, especially with regard to
+training efficiency for large-scale datasets. The study's finding
+implies that future work might concentrate on enhancing SVM algorithms
+and increasing the range of real-world uses for them.
+
+**A Review on Support Vector Machine for Data Classification**
+
+This study emphasizes that in an era of increased data output, there is
+a growing demand for strong, rapid, and accurate algorithms for data
+analysis. Benefits of Support Vector Machines (SVM) as a potent machine
+learning technique for a range of statistical learning issues, including
+bioinformatics, are highlighted. In particular, SVMs are well-known for
+their use of kernel functions and generalization theory, which allow for
+the creation of non-linear decision surfaces for tasks involving
+regression and classification. The study presents a summary of Support
+Vector Machines (SVM), examines both linear and non-linear
+classification, and highlights the significance of kernel selection. It
+also covers a variety of data mining classification approaches before
+recognizing some of SVM's drawbacks, including the difficulty of
+selecting the best kernel for a given situation and issues with
+performance and size.
+
+**Overview of Support Vector Machine in Modeling Machining
+Performances**
+
+The use of Support Vector Machines (SVM) to model machining performances
+is covered in this study, focusing on both traditional and contemporary
+machining procedures. Researchers from Universiti Teknologi Malaysia
+draw attention to the difficulties in simulating and improving machining
+operations as well as the growing use of computational methods like SVM.
+Surface roughness, tool wear, tool breakage, and defect diagnostics are
+just a few of the machining factors that are modeled by the Support
+Vector Machine (SVM), a potent mathematical tool for data
+classification, regression, and function estimation. The review
+highlights how well SVM handles the intricacy of machining processes and
+how widely it is used to produce high-quality items with economical
+predictions. The study emphasizes SVM's function as a flexible and
+trustworthy modeling approach in the developing field of machining.
+
+**USING SVM With FINANCIAL STATEMENT ANALYSIS FOR PREDECTION OF STOCKS**
+
+The paper introduces a method for stock market prediction using Support
+Vector Machines (SVM) combined with financial statement analysis. Unlike
+technical indices, financial indices are considered more reliable and
+valid. The researchers applied SVM with a Gaussian radial basis function
+(RBF) kernel to construct a prediction model. The study utilized
+financial statements from stock companies in the Shanghai and Shenzhen
+stock exchanges, with 251 brand-new and dependable datasets. The primary
+indices for analysis included Earnings Per Share (EPS), Book Value Per
+Share (BVPS), and Net Profit Growth Rate (NPGR). The Outstanding
+Achievement Growth Rate (OAGR) was classified into two choices, +1 and
+-1, denoted as SVM. Eight prediction modules were generated by combining
+SVM with the three primary indices. The paper aims to compare
+experimental results from these modules, with the first module serving
+as the basic one. The comparison allows different stockholders to select
+relevant items for analysis based on their specific needs, as the first
+module primarily reflects the accuracy rate of professionals and experts
+rather than addressing stockholders' analyses.
+
+**SENTIMENT ANALYSIS ONLINE SHOP ON THE PLAY STORE USING METHOD SUPPORT
+VECTOR MACHINE (SVM)**
+
+The article discusses the increasing prevalence of online shopping and
+its impact on companies, emphasizing the importance of understanding
+public responses to products or services offered online. Due to the
+large volume of responses, manual processing becomes impractical,
+prompting the use of the Support Vector Machine method for
+classification. The study focuses on classifying positive and negative
+user responses on online shopping applications available on the Google
+Play Store. Using a 10-fold cross-validation evaluation model with 3,000
+reviews (1,500 for training and 300 for testing each application), the
+research employs the Support Vector Machine method. The results indicate
+that Tokopedia achieves the highest accuracy at 90.67%, followed by
+JD.ID at 75.33%, Blibli at 74.00%, Shopee at 70.00%, and Lazada at
+69.00%. The study emphasizes the significance of sentiment analysis in
+understanding user feedback online shopping platforms.
+
+**Multilevel Weighted Support Vector Machine for Classification on
+Healthcare Data with Missing Values**
+
+The paper addresses the challenges in predictive analytics on healthcare
+data, specifically Electronic Medical Records, which often suffer from
+noise, missing entries, and imbalances in class distribution, leading to
+biased predictive models. Standard data mining methods are deemed
+inadequate, prompting the proposal of specialized techniques for data
+preprocessing and classification. The authors introduce a novel approach
+that simultaneously classifies large datasets and mitigates the impact
+of missing values. This method employs a multilevel framework involving
+cost-sensitive Support Vector Machines (SVM) and expected maximization
+imputation for missing values through iterated regression analyses.
+Comparative evaluations on benchmark datasets and real healthcare data
+demonstrate that the proposed multilevel SVM-based method yields faster,
+more accurate, and robust classification results compared to existing
+approaches.
+
+**Support vector machines for quality control of DNA sequencing.**
+
+The paper discusses the application of support vector machines (SVMs), a
+non-parametric classifier, in the quality control of DNA sequencing
+data. SVMs, categorized into linear and nonlinear types, are employed to
+create a classification system for distinguishing between high-quality
+and low-quality DNA chromatograms. The study introduces a novel quality
+evaluation technique, treating the problem as a two-class classification
+issue, where SVM is chosen as the classifier. The SVM is trained on a
+set of features extracted from chromatograms, and the resulting
+hyperplane is then applied to a testing set, generating a confusion
+matrix. The results indicate high accuracy, with only one mistake,
+making the proposed method a promising solution for automating the
+screening of DNA data, particularly in large DNA sequencing facilities.
+
+**Support Vector Machine for Network Intrusion and Cyber-Attack
+Detection**
+
+The article introduces an unsupervised anomaly-based Intrusion Detection
+System (IDS) and explores the integration of Support Vector Machines
+(SVM) to improve its performance. The evaluation includes linear and
+non-linear SVM configurations. Results show that linear two-class SVM
+achieves highly accurate results, reaching 100% for most datasets.
+Linear one-class SVM performs well without requiring training datasets
+with malicious data. The IDS detects all malicious traffic but exhibits
+decreased accuracy for certain datasets, suggesting potential benefits
+from SVM techniques, especially in handling non-homogeneous data.
+
+**Precision Sugarcane Monitoring Using SVM Classifier**
+
+The article introduces a system model for monitoring sugarcane crops in
+northern India to optimize yield by addressing soil conditions and
+diseases. The model continuously monitors temperature, humidity, and
+moisture levels, crucial for crop health. It employs KNN clustering and
+SVM classification to identify infections from images taken at regular
+intervals. The data is transmitted wirelessly to a control unit, which,
+after analysis, sends suggestions to the farmer's registered mobile
+number. The system incorporates a Graphic User Interface (GUI)
+displaying sensor values and uses image processing to identify
+infections. Tested near Malheur, Gomti Nagar Extension, the model
+achieved 96% accuracy in identifying diseases from 200 sample images.
+The proposed system aims to enhance precision agriculture for sugarcane
+crops by integrating sensor monitoring, image processing, and disease
+classification algorithms.
+
+**Early Prediction of Dementia Using Feature Extraction Battery(FEB) and
+Optimized Support Vector Machine (SVM) for Classification**
+
+The research focuses on early dementia prediction using machine learning
+(ML), specifically the optimized support vector machine (SVM) FEB-SVM
+model. The study addresses the limitations of existing ML models by
+adding Adaptive Synthetic Sampling (ADASYN) bias and introduces new
+feature extraction (FEB) techniques to improve accuracy. The data is
+collected from the Swedish National Survey on Aging and Care (SNAC), and
+the accuracy of the proposed FEB-SVM model is 6% better than the
+traditional SVM. The model is trained on a dataset of 726 participants,
+showing 98.28% training accuracy and 93.92% testing accuracy. The study
+outperforms 12 state-of-the-art ML models in predicting dementia,
+demonstrating its effectiveness in early diagnosis. The methodology
+includes data processing, feature extraction using LDA, ICA, PCA, LLE,
+and t-SNE, unbalanced class treatment using ADASYN, and SVM
+hyperparameter optimization using grid search.
+
+**New incremental SVM algorithms for human activity recognition in smart
+homes**
+
+The paper introduces incremental SVM methods that improve the
+classification performance of SVM in the context of smart home human
+activity detection. Two characteristic extraction techniques are
+proposed: refining dependent sensor extraction and focusing on the last
+sensor event. Additional SVM methods include a cluster-based approach
+(IncSucc) to remove redundant information from new pieces and a
+similarity-based approach to identify and reject support vectors and new
+strong similarities. Simulations on Aruba and Tulum datasets show the
+feasibility and improvement of the proposed methods in real-time
+learning and classification, and similarity-based incremental learning
+is significantly faster. This approach also addresses the challenge of
+reducing data and support vectors incrementally for efficient model
+development.
+
+**A credit risk assessment model based on SVM for small and medium
+enterprises in supply chain finance**
+
+Supply Chain Finance (SCF) is the field in which financial services
+providers assist customers and suppliers in managing their working
+capital. Leading supply chain companies in this system ensure financing
+for Small and Medium Businesses (SMEs). This study suggests an index
+method that takes into account the credit standing of major corporations
+and their links with small and medium-sized firms in order to evaluate
+credit risks in SCF. Support Vector Machine (SVM) and BP Neural
+Network-based credit risk models are contrasted. More accurate
+assessments of SME credit risk by banks and the possibility of loosening
+lending limitations on SMEs are made possible by the higher efficiency
+of the SVM model. In general, the SVM model and the SCF credit risk
+assessment index system provide banks with the best possible combination
+for assessing the credit risk of SMEs.
+
+**Multi-disease prediction model using improved SVM-radial bias
+technique in healthcare monitoring system**
+
+This work focuses on using machine learning to predict diseases in the
+healthcare sector, specifically using the enhanced SVM-Radial bias
+kernel approach. In an era where information is extremely valuable, the
+healthcare industry produces a lot of data that includes patient
+information and disease-related data. By analyzing this vast amount of
+medical data, the suggested generic architecture aims to reveal
+underlying illness patterns and enable personalized treatment.
+Particularly, a fewer number of attributes from datasets on diabetes,
+heart disease, and chronic kidney disease were tested in this study. The
+enhanced SVM-Radial bias kernel method outperformed other machine
+learning approaches in R studio, including SVM-Linear, SVM-Polynomial,
+Random Forest, and Decision Tree. Notably, for the datasets on chronic
+kidney disease, diabetes, and heart disease, respectively, this approach
+showed astounding accuracy rates of 98.3%, 98.7%, and 89.9%. The results
+mentioned above highlight the effectiveness of support vector machines
+(SVM) in personalized healthcare and disease prediction.
+
+**Verifiable and Secure SVM Classification for Cloud-Based Health
+Monitoring Services**
+
+The paper discusses the challenges in medical services costs due to the
+increasing prevalence of chronic diseases and aging populations. It
+explores the use of artificial intelligence and wearable devices in
+health monitoring services provided by medical institutions, often
+employing support vector machine (SVM) classification techniques for
+real-time medical decisions. The introduction of cloud-based health
+monitoring services raises privacy concerns, particularly regarding
+potential malicious behavior by the cloud server. The proposed solution,
+VSSVMC, presents a verifiable and secure SVM classification scheme
+tailored for cloud-based health monitoring services under a malicious
+threat model. It ensures decision verifiability and data confidentiality
+through the integration of pseudorandom permutations, pseudorandom
+functions, and symmetric key encryption, addressing a more robust threat
+model compared to existing schemes. The article provides formal proofs
+for the security, verifiability, and efficiency of VSSVMC, demonstrating
+competitive performance in computation, communication, and storage costs
+through experimental evaluations on the Breast-Cancer-Wisconsin dataset.
+Notably, VSSVMC achieves O(1) computational complexity, microsecond
+execution time, and minimal communication and storage costs, positioning
+it as a promising solution for trustworthy and privacy-preserving
+cloud-based health monitoring services.
+
+**Efficient Medical Diagnosis of Human Heart Diseases Using Machine
+Learning Techniques With and Without GridSearchCV**
+
+This research aims to develop an intuitive medical prediction system for
+early detection of heart disease using modern machine learning
+techniques. Various classifier algorithms, including logistic
+regression, K-nearest neighbors, support vector machine, and Gradient
+Boosting Classifier with and without GridSearchCV, were trained and
+compared for optimal heart disease detection. Four model selection
+strategies, including correlation-based feature subset evaluator and
+Gradient Boosting Classifier with GridSearchCV, were employed to
+identify attributes influencing classifier performance. The Extreme
+Gradient Boosting Classifier with GridSearchCV exhibited the highest
+accuracy (100% and 99.03%) across different datasets. The study
+evaluates performance indicators such as accuracy, recall, precision,
+and F1-Score, comparing results with previous cardiac prediction
+studies.
+
+**PSO optimization for analysis of online marketplace products on the
+SVM method**
+
+The study focuses on selecting online marketplaces based on reviews and
+comments to address user hesitancy. Researchers collect and process
+comments from online marketplaces, creating datasets for analysis. Using
+the Support Vector Machine (SVM) algorithm, the text data is classified,
+and Particle Swarm Optimization (PSO) is employed for comparison. While
+SVM alone provides good results, the combination with PSO optimization
+enhances accuracy, particularly in text classification for marketplace
+reviews. The testing results reveal insights for sellers to identify
+sentiment-related words with significant weight in customer feedback.
+
+**Prediction of Consumer Purchasing in a Grocery Store Using Machine
+Learning Techniques**
+
+This study focuses on customer predictions and purchase behavior, which
+has been the subject of consumer behavior research in recent decades.
+While traditional models relied on simple equations to understand
+purchase intent that take into account factors such as age, gender,
+income and advertising intent, the use of technology such as point of
+sale systems and sensors yielded vast amounts of data. Linear models
+often used in this context, such as linear discriminant analysis and
+logistic regression, are currently considered insufficient to meet the
+growing demands of academia and practitioners. In response, this paper
+examines the effectiveness of two advanced machine learning methods, the
+Bayesian classifier and the support vector machine (SVM), using real
+data to predict purchasing behavior.
+
+**Support Vector Machines for Diagnosis of Diabetes Mellitus**
+
+The suggested method makes use of support vector machines to diagnose
+diabetes, improving their interpretability by adding a module for more
+explanation. This module converts the classification choices made by the
+SVM from a "black box" model to a comprehensible representation. The
+interpretable rulesets produced by the understandable SVMs add to the
+diagnostic process's interpretability. Based on a real-world diabetes
+dataset, interpretable support vector machines (SVMs) show encouraging
+results, with 94% prediction accuracy, 93% sensitivity, and 94%
+specificity. The extracted guidelines are consistent with pertinent
+research and medical expertise.
+
+**Applying Support Vector Machine to Electronic Health Records for
+Cancer Classification**
+
+To classify cancer cases, the study uses a support vector machine (SVM)
+model that was trained on medical data taken from electronic health
+records (EHRs). A prediction accuracy of 86.2% was achieved for 10
+distinct types of malignancies using the training process, which used
+100 pieces of medical records per malignancy. Additionally, when trained
+with 400 pieces of medical records per cancer, the accuracy rises to
+97.33% for three distinct types of malignancies.
+
+**An effective intrusion detection approach using SVM with naïve Bayes
+feature embedding**
+
+This paper focuses on network security and intrusion detection systems,
+highlighting the significance of data quality in constructing an
+effective system. The authors propose a framework that combines Support
+Vector Machines (SVM) with naïve Bayes feature embedding for intrusion
+detection. The naïve Bayes feature transformation technique is applied
+to the original features, generating high-quality data, which is then
+used to train an SVM classifier for building the intrusion detection
+model.The experiments conducted on multiple datasets in the intrusion
+detection domain demonstrate the effectiveness of the proposed method.
+It achieves impressive and robust performances with high accuracy rates:
+93.75% on UNSW-NB15, 98.92% on CICIDS2017, 99.35% on NSL-KDD, and 98.58%
+on Kyoto 2006+.
+
+**New hybrid method for attack detection using combination of
+evolutionary algorithms, SVM, and ANN**
+
+This paper focuses on enhancing intrusion detection systems (IDS) for
+computer networks by proposing a new hybrid method. The method consists
+of two phases: a feature selection phase and an attack detection phase.
+In the feature selection phase, a wrapper technique called MGA-SVM,
+which combines support vector machine (SVM) features with the genetic
+algorithm using multi-parent crossover and multi-parent mutation (MGA),
+is employed. The attack detection phase utilizes an artificial neural
+network (ANN), and to improve its performance, a combination of hybrid
+gravitational search (HGS) and particle swarm optimization (PSO) is used
+to train the classifier. The overall hybrid method is named
+MGA-SVM-HGS-PSO-ANN.The performance of this method is compared with
+other popular techniques such as Chi-SVM, ANN based on gradient descent
+(GD-ANN), decision tree (DT), ANN based on genetic algorithm (GA-ANN),
+GSPSO-ANN, PSO-ANN, and GS-ANN. The evaluation is conducted using the
+NSL-KDD dataset as a standard benchmark for attack detection. The
+results demonstrate that the proposed MGA-SVM-HGS-PSO-ANN method
+achieves a maximum detection accuracy of 99.3%, reduces the
+dimensionality of NSL-KDD from 42 to 4 features, and requires only 3
+seconds as the maximum training time.
 
 ## References
 
-1.  Javeed, A. et al. (2023) Early prediction of dementia using feature
+1.  Jakkula, V. (2006). Tutorial on support vector machine
+    (svm). *School of EECS, Washington State University*, *37*(2.5), 3.
+
+2.  Kecman, V. (2005). Support vector machines-an introduction. In
+    Support vector machines theory and applications (pp. 1-47). Berlin,
+    Heidelberg: Springer Berlin Heidelberg
+
+3.  Yue, S., Li, P., & Hao, P. (2003). SVM classification: Its contents
+    and challenges. Applied Mathematics-A Journal of Chinese
+    Universities, 18, 332-342.
+
+4.  Jun, Z. (2021). The development and application of support vector
+    machine. In *Journal of Physics: Conference Series* (Vol. 1748, No.
+    5, p. 052006). IOP Publishing.
+
+5.  Bhavsar, H., & Panchal, M. H. (2012). A review on support vector
+    machine for data classification. International Journal of Advanced
+    Research in Computer Engineering & Technology (IJARCET), 1(10),
+    185-189.
+
+6.  Deris, A. M., Zain, A. M., & Sallehuddin, R. (2011). Overview of
+    support vector machine in modeling machining performances. *Procedia
+    Engineering*, *24*, 308-312.
+
+7.  Han, Shuo. “Using SVM with Financial Statement Analysis for
+    Prediction of Stocks.” *Communications of the IIMA Communications of
+    the IIMA*, vol. 7, 2007,
+    scholarworks.lib.csusb.edu/cgi/viewcontent.cgi?article=1059&context=ciima.
+
+8.  Ahmadi, Muhammad Iqbal, et al. “SENTIMENT ANALYSIS ONLINE SHOP on
+    the PLAY STORE USING METHOD SUPPORT VECTOR MACHINE (SVM).” *Seminar
+    Nasional Informatika (SEMNASIF)*, vol. 1, no. 1, 15 Dec. 2020, pp.
+    196–203, jurnal.upnyk.ac.id/index.php/semnasif/article/view/4101.
+    Accessed 13 Feb. 2024.
+
+9.  Razzaghi, Talayeh, et al. “Multilevel Weighted Support Vector
+    Machine for Classification on Healthcare Data with Missing Values.”
+    *PLOS ONE*, vol. 11, no. 5, 19 May 2016, p. e0155119,
+    https://doi.org/10.1371/journal.pone.0155119.
+
+10. Öz, Ersoy, and Hüseyin Kaya. “Support Vector Machines for Quality
+    Control of DNA Sequencing.” *Journal of Inequalities and
+    Applications*, vol. 2013, no. 1, 4 Mar. 2013,
+    https://doi.org/10.1186/1029-242x-2013-85. Accessed 15 June 2021.
+
+11. “Support Vector Machine for Network Intrusion and Cyber-Attack
+    Detection \| IEEE Conference Publication \| IEEE Xplore.”
+    *Ieeexplore.ieee.org*,
+    ieeexplore.ieee.org/abstract/document/8233268. Accessed 13 Feb.
+    2024.
+
+12. Kumar, Sachin, et al. “Precision Sugarcane Monitoring Using SVM
+    Classifier.” *Procedia Computer Science*, vol. 122, 2017, pp.
+    881–887, https://doi.org/10.1016/j.procs.2017.11.450. Accessed 25
+    July 2019.
+
+13. Javeed, A. et al. (2023) Early prediction of dementia using feature
     Extraction Battery (FEB) and optimized support vector machine (SVM)
     for Classification, MDPI. Available at:
     https://www.mdpi.com/2227-9059/11/2/439 (Accessed: 22 January 2024).
-2.  Nawal, Y., Oussalah, M., Fergani, B., & Fleury, A. (2022). New
+
+14. Nawal, Y., Oussalah, M., Fergani, B., & Fleury, A. (2022). New
     incremental SVM algorithms for human activity recognition in smart
     homes. Journal of Ambient Intelligence and Humanized Computing.
     https://doi.org/10.1007/s12652-022-03798-w
-3.  Zhang, L., Hu, H., & Zhang, D. (2015). A credit risk assessment
+
+15. Zhang, L., Hu, H., & Zhang, D. (2015). A credit risk assessment
     model based on SVM for small and medium enterprises in supply chain
     finance. *Financial Innovation*, *1*(1).
     <https://doi.org/10.1186/s40854-015-0014-5>
-4.  Harimoorthy, K., Thangavelu, M. RETRACTED ARTICLE: Multi-disease
+
+16. Harimoorthy, K., Thangavelu, M. RETRACTED ARTICLE: Multi-disease
     prediction model using improved SVM-radial bias technique in
     healthcare monitoring system. *J Ambient Intell Human
     Comput* **12**, 3715–3723 (2021).
     https://doi.org/10.1007/s12652-019-01652-0
-5.  J. Liang, Z. Qin, L. Xue, X. Lin and X. Shen, "Verifiable and Secure
+
+17. J. Liang, Z. Qin, L. Xue, X. Lin and X. Shen, "Verifiable and Secure
     SVM Classification for Cloud-Based Health Monitoring Services," in
     IEEE Internet of Things Journal, vol. 8, no. 23, pp. 17029-17042, 1
     Dec.1, 2021, doi: 10.1109/JIOT.2021.3075540.
-6.  G. N. Ahmad, H. Fatima, S. Ullah, A. Salah Saidi and Imdadullah,
+
+18. G. N. Ahmad, H. Fatima, S. Ullah, A. Salah Saidi and Imdadullah,
     "Efficient Medical Diagnosis of Human Heart Diseases Using Machine
     Learning Techniques With and Without GridSearchCV," in IEEE Access,
     vol. 10, pp. 80151-80173, 2022, doi: 10.1109/ACCESS.2022.3165792.
+
+19. https://pubs.aip.org/aip/acp/article-abstract/2714/1/030010/2889759/PSO-optimization-for-analysis-of-online?redirectedFrom=fulltext
+
+20. “Prediction of Consumer Purchasing in a Grocery Store Using Machine
+    Learning Techniques.” *Ieeexplore.ieee.org*,
+    ieeexplore.ieee.org/document/7941935.
+
+21. Barakat, Nahla, et al. “Intelligible Support Vector Machines for
+    Diagnosis of Diabetes Mellitus.” *IEEE Transactions on Information
+    Technology in Biomedicine*, vol. 14, no. 4, July 2010, pp.
+    1114–1120, https://doi.org/10.1109/titb.2009.2039485.
+
+22. “Applying Support Vector Machine to Electronic Health Records for
+    Cancer Classification \| IEEE Conference Publication \| IEEE
+    Xplore.” *Ieeexplore.ieee.org*,
+    ieeexplore.ieee.org/abstract/document/8732906.
+
+23. “An Effective Intrusion Detection Approach Using SVM with Naïve
+    Bayes Feature Embedding.” *Computers & Security*, vol. 103, 1 Apr.
+    2021, p. 102158,
+    www.sciencedirect.com/science/article/pii/S0167404820304314,
+    https://doi.org/10.1016/j.cose.2020.102158.
+
+24. Hosseini, Soodeh, and Behnam Mohammad Hasani Zade. “New Hybrid
+    Method for Attack Detection Using Combination of Evolutionary
+    Algorithms, SVM, and ANN.” *Computer Networks*, vol. 173, May
+    2020, p. 107168, https://doi.org/10.1016/j.comnet.2020.107168.
