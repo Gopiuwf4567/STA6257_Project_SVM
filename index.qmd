@@ -1,6 +1,9 @@
 ---
 title: "SVM Report - Data Science Capstone"
-author: "Gopi Shankar Reddy"
+author: "Gopi Shankar Reddy Mallu,
+         Kavya Reddy Maale,
+         Satya Nageswara Dinesh Donkada,
+         Vamsi Krishna Kalla"
 date: 'today'
 format:
   html:
