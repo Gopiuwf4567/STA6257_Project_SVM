@@ -1,5 +1,5 @@
 ---
-title: "SVM Report - Data Science Capstone"
+title: "Support Vector Machine - Capstone Project"
 author: "Gopi Shankar Reddy Mallu,
          Kavya Reddy Maale,
          Satya Nageswara Dinesh Donkada,
