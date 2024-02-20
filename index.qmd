@@ -146,14 +146,14 @@ sustainability of their operations. ABC Multinational Bank, in
 particular, places a strong emphasis on retaining its account holders.
 The primary objective of this analysis is to examine the customer data
 of the bank's account holders to predict and prevent customer churn
-effectively.
+effectively (Rangala, M., 2024).
 
 The dataset under consideration contains information about account
 holders at ABC Multinational Bank, with the ultimate goal of predicting
 customer churn. The dataset comprises the following columns:
 
 | Column Name        | Description                                                                        |
-|-----------------|-------------------------------------------------------|
+|------------------|------------------------------------------------------|
 | `customer_id`      | A unique identifier for each customer, not used in the analysis.                   |
 | `credit_score`     | A numerical representation of the customer's creditworthiness.                     |
 | `country`          | The country in which the customer resides.                                         |
@@ -181,119 +181,123 @@ customer churn. The dataset comprises the following columns:
     Algorithm*. GeeksforGeeks.
     https://www.geeksforgeeks.org/support-vector-machine-algorithm/.
 
-4.  Jakkula, V. (2006). Tutorial on support vector machine
+4.  Rangala, M. (n.d.). *Bank Churn Dataset*. Www.kaggle.com. Retrieved
+    February 20, 2024, from
+    https://www.kaggle.com/datasets/rangalamahesh/bank-churn
+
+5.  Jakkula, V. (2006). Tutorial on support vector machine
     (svm). *School of EECS, Washington State University*, *37*(2.5), 3.
 
-5.  Kecman, V. (2005). Support vector machines-an introduction. In
+6.  Kecman, V. (2005). Support vector machines-an introduction. In
     Support vector machines theory and applications (pp. 1-47). Berlin,
     Heidelberg: Springer Berlin Heidelberg
 
-6.  Yue, S., Li, P., & Hao, P. (2003). SVM classification: Its contents
+7.  Yue, S., Li, P., & Hao, P. (2003). SVM classification: Its contents
     and challenges. Applied Mathematics-A Journal of Chinese
     Universities, 18, 332-342.
 
-7.  Jun, Z. (2021). The development and application of support vector
+8.  Jun, Z. (2021). The development and application of support vector
     machine. In *Journal of Physics: Conference Series* (Vol. 1748, No.
     5, p. 052006). IOP Publishing.
 
-8.  Bhavsar, H., & Panchal, M. H. (2012). A review on support vector
+9.  Bhavsar, H., & Panchal, M. H. (2012). A review on support vector
     machine for data classification. International Journal of Advanced
     Research in Computer Engineering & Technology (IJARCET), 1(10),
     185-189.
 
-9.  Deris, A. M., Zain, A. M., & Sallehuddin, R. (2011). Overview of
+10. Deris, A. M., Zain, A. M., & Sallehuddin, R. (2011). Overview of
     support vector machine in modeling machining performances. *Procedia
     Engineering*, *24*, 308-312.
 
-10. Han, Shuo. “Using SVM with Financial Statement Analysis for
+11. Han, Shuo. “Using SVM with Financial Statement Analysis for
     Prediction of Stocks.” *Communications of the IIMA Communications of
     the IIMA*, vol. 7, 2007,
     scholarworks.lib.csusb.edu/cgi/viewcontent.cgi?article=1059&context=ciima.
 
-11. Ahmadi, Muhammad Iqbal, et al. “SENTIMENT ANALYSIS ONLINE SHOP on
+12. Ahmadi, Muhammad Iqbal, et al. “SENTIMENT ANALYSIS ONLINE SHOP on
     the PLAY STORE USING METHOD SUPPORT VECTOR MACHINE (SVM).” *Seminar
     Nasional Informatika (SEMNASIF)*, vol. 1, no. 1, 15 Dec. 2020, pp.
     196–203, jurnal.upnyk.ac.id/index.php/semnasif/article/view/4101.
     Accessed 13 Feb. 2024.
 
-12. Razzaghi, Talayeh, et al. “Multilevel Weighted Support Vector
+13. Razzaghi, Talayeh, et al. “Multilevel Weighted Support Vector
     Machine for Classification on Healthcare Data with Missing Values.”
     *PLOS ONE*, vol. 11, no. 5, 19 May 2016, p. e0155119,
     https://doi.org/10.1371/journal.pone.0155119.
 
-13. Öz, Ersoy, and Hüseyin Kaya. “Support Vector Machines for Quality
+14. Öz, Ersoy, and Hüseyin Kaya. “Support Vector Machines for Quality
     Control of DNA Sequencing.” *Journal of Inequalities and
     Applications*, vol. 2013, no. 1, 4 Mar. 2013,
     https://doi.org/10.1186/1029-242x-2013-85. Accessed 15 June 2021.
 
-14. “Support Vector Machine for Network Intrusion and Cyber-Attack
+15. “Support Vector Machine for Network Intrusion and Cyber-Attack
     Detection \| IEEE Conference Publication \| IEEE Xplore.”
     *Ieeexplore.ieee.org*,
     ieeexplore.ieee.org/abstract/document/8233268. Accessed 13 Feb 2024.
 
-15. Kumar, Sachin, et al. “Precision Sugarcane Monitoring Using SVM
+16. Kumar, Sachin, et al. “Precision Sugarcane Monitoring Using SVM
     Classifier.” *Procedia Computer Science*, vol. 122, 2017, pp.
     881–887, https://doi.org/10.1016/j.procs.2017.11.450. Accessed 25
     July 2019.
 
-16. Javeed, A. et al. (2023) Early prediction of dementia using feature
+17. Javeed, A. et al. (2023) Early prediction of dementia using feature
     Extraction Battery (FEB) and optimized support vector machine (SVM)
     for Classification, MDPI. Available at:
     https://www.mdpi.com/2227-9059/11/2/439 (Accessed: 22 January 2024).
 
-17. Nawal, Y., Oussalah, M., Fergani, B., & Fleury, A. (2022). New
+18. Nawal, Y., Oussalah, M., Fergani, B., & Fleury, A. (2022). New
     incremental SVM algorithms for human activity recognition in smart
     homes. Journal of Ambient Intelligence and Humanized Computing.
     https://doi.org/10.1007/s12652-022-03798-w
 
-18. Zhang, L., Hu, H., & Zhang, D. (2015). A credit risk assessment
+19. Zhang, L., Hu, H., & Zhang, D. (2015). A credit risk assessment
     model based on SVM for small and medium enterprises in supply chain
     finance. *Financial Innovation*, *1*(1).
     <https://doi.org/10.1186/s40854-015-0014-5>
 
-19. Harimoorthy, K., Thangavelu, M. RETRACTED ARTICLE: Multi-disease
+20. Harimoorthy, K., Thangavelu, M. RETRACTED ARTICLE: Multi-disease
     prediction model using improved SVM-radial bias technique in
     healthcare monitoring system. *J Ambient Intell Human
     Comput* **12**, 3715–3723 (2021).
     https://doi.org/10.1007/s12652-019-01652-0
 
-20. J. Liang, Z. Qin, L. Xue, X. Lin and X. Shen, "Verifiable and Secure
+21. J. Liang, Z. Qin, L. Xue, X. Lin and X. Shen, "Verifiable and Secure
     SVM Classification for Cloud-Based Health Monitoring Services," in
     IEEE Internet of Things Journal, vol. 8, no. 23, pp. 17029-17042, 1
     Dec.1, 2021, doi: 10.1109/JIOT.2021.3075540.
 
-21. G. N. Ahmad, H. Fatima, S. Ullah, A. Salah Saidi and Imdadullah,
+22. G. N. Ahmad, H. Fatima, S. Ullah, A. Salah Saidi and Imdadullah,
     "Efficient Medical Diagnosis of Human Heart Diseases Using Machine
     Learning Techniques With and Without GridSearchCV," in IEEE Access,
     vol. 10, pp. 80151-80173, 2022, doi: 10.1109/ACCESS.2022.3165792.
 
-22. Sahara, S., Annida Purnamawati, Sulaeman Hadi Sukmana, Mely
+23. Sahara, S., Annida Purnamawati, Sulaeman Hadi Sukmana, Mely
     Mailasari, Erma Delima Sikumbang, & Puji, E. (2023). PSO
     optimization for analysis of online marketplace products on the SVM
     method. *AIP Conference Proceedings*.
     https://doi.org/10.1063/5.0129404
 
-23. “Prediction of Consumer Purchasing in a Grocery Store Using Machine
+24. “Prediction of Consumer Purchasing in a Grocery Store Using Machine
     Learning Techniques.” *Ieeexplore.ieee.org*,
     ieeexplore.ieee.org/document/7941935.
 
-24. Barakat, Nahla, et al. “Intelligible Support Vector Machines for
+25. Barakat, Nahla, et al. “Intelligible Support Vector Machines for
     Diagnosis of Diabetes Mellitus.” *IEEE Transactions on Information
     Technology in Biomedicine*, vol. 14, no. 4, July 2010, pp.
     1114–1120, https://doi.org/10.1109/titb.2009.2039485.
 
-25. “Applying Support Vector Machine to Electronic Health Records for
+26. “Applying Support Vector Machine to Electronic Health Records for
     Cancer Classification \| IEEE Conference Publication \| IEEE
     Xplore.” *Ieeexplore.ieee.org*,
     ieeexplore.ieee.org/abstract/document/8732906.
 
-26. “An Effective Intrusion Detection Approach Using SVM with Naïve
+27. “An Effective Intrusion Detection Approach Using SVM with Naïve
     Bayes Feature Embedding.” *Computers & Security*, vol. 103, 1 Apr.
     2021, p. 102158,
     www.sciencedirect.com/science/article/pii/S0167404820304314,
     https://doi.org/10.1016/j.cose.2020.102158.
 
-27. Hosseini, Soodeh, and Behnam Mohammad Hasani Zade. “New Hybrid
+28. Hosseini, Soodeh, and Behnam Mohammad Hasani Zade. “New Hybrid
     Method for Attack Detection Using Combination of Evolutionary
     Algorithms, SVM, and ANN.” *Computer Networks*, vol. 173, May
     2020, p. 107168, https://doi.org/10.1016/j.comnet.2020.107168.
