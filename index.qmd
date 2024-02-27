@@ -33,7 +33,7 @@ between the hyperplane and the closest data points from each class. Once
 the hyperplane is determined, new data can be classified by determining
 on which side of the hyperplane it falls. SVMs are particularly useful
 when the data has many features, and/or when there is a clear margin of
-separation in the data (A, L., 2020).
+separation in the data.
 
 ![](images/clipboard-4268047144.png)
 
@@ -43,7 +43,7 @@ to different classes. Also, the dimension of the hyperplane depends upon
 the number of features. If the number of input features is 2, then the
 hyperplane is just a line. If the number of input features is 3, then
 the hyperplane becomes a two-dimensional plane. It becomes difficult to
-imagine when the number of features exceeds 3 (Gandhi, R., 2018).
+imagine when the number of features exceeds 3.
 
 ![](images/clipboard-4038275398.png)
 
@@ -76,7 +76,7 @@ transforms it into higher-dimensional space, ie it converts nonseparable
 problems to separable problems. It is mostly useful in non-linear
 separation problems. Simply put the kernel, does some extremely complex
 data transformations and then finds out the process to separate the data
-based on the labels or outputs defined (Sasidharan, A., 2021).
+based on the labels or outputs defined.
 
 $Linear : K(w,b)=w^Tx+b$
 
@@ -146,14 +146,14 @@ sustainability of their operations. ABC Multinational Bank, in
 particular, places a strong emphasis on retaining its account holders.
 The primary objective of this analysis is to examine the customer data
 of the bank's account holders to predict and prevent customer churn
-effectively (Rangala, M., 2024).
+effectively.
 
 The dataset under consideration contains information about account
 holders at ABC Multinational Bank, with the ultimate goal of predicting
 customer churn. The dataset comprises the following columns:
 
 | Column Name        | Description                                                                        |
-|------------------|------------------------------------------------------|
+|-------------------|-----------------------------------------------------|
 | `customer_id`      | A unique identifier for each customer, not used in the analysis.                   |
 | `credit_score`     | A numerical representation of the customer's creditworthiness.                     |
 | `country`          | The country in which the customer resides.                                         |
@@ -167,137 +167,221 @@ customer churn. The dataset comprises the following columns:
 | `estimated_salary` | The estimated annual salary of the customer.                                       |
 | `churn`            | The target variable, indicating customer churn (1 for churned, 0 for not churned). |
 
+```{r}
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+#install.packages("corrplot")
+library(corrplot)
+```
+
+```{r}
+df <- read.csv("dataset/train.csv")
+```
+
+```{r}
+head(df)
+```
+
+```{r}
+summary(select(df, CreditScore, Age, Tenure, Balance, NumOfProducts, EstimatedSalary))
+
+```
+
+```{r}
+sapply(df[,c('Geography', 'Gender', 'HasCrCard', 'IsActiveMember', 'Exited')], function(x) length(unique(x)))
+```
+
+```{r}
+colSums(is.na(df))
+```
+
+```{r}
+table(df$Exited)
+
+```
+
+```{r}
+# Relationship between Geography and Exited
+table(df$Geography, df$Exited)
+
+```
+
+```{r}
+aggregate(df$CreditScore, by = list(df$Gender), FUN = mean)
+```
+
+```{r}
+# Correlation between numerical variables
+cor(select(df, CreditScore, Age, Tenure, Balance, NumOfProducts, EstimatedSalary))
+```
+
+```{r}
+# Histogram of Age
+ggplot(df, aes(x = Age)) + geom_histogram(binwidth = 5, fill = "blue", color = "black")
+
+```
+
+```{r}
+ggplot(df, aes(x = as.factor(Exited), y = Balance)) + geom_boxplot()
+
+```
+
+```{r}
+ggplot(df, aes(x = Geography, fill = as.factor(NumOfProducts))) + geom_bar(position = "dodge")
+
+```
+
+```{r}
+# Scatter plot of Age vs EstimatedSalary colored by Exited
+ggplot(df, aes(x = Age, y = EstimatedSalary, color = as.factor(Exited))) + geom_point()
+
+```
+
+```{r}
+corr_matrix <- cor(select(df, CreditScore, Age, Tenure, Balance, NumOfProducts, EstimatedSalary))
+corrplot(corr_matrix, method = "circle")
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
 ## References
 
-1.  A, L. (2020, June 9). *Introduction to Support Vector Machines
-    (SVM)*. GeeksforGeeks.
-    https://www.geeksforgeeks.org/introduction-to-support-vector-machines-svm/
-
-2.  Gandhi, R. (2018, June 7). *Support Vector Machine — Introduction to
-    Machine Learning Algorithms*. Towards Data Science.
-    https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47.
-
-3.  Sasidharan, A. (2021, January 20). *Support Vector Machine
-    Algorithm*. GeeksforGeeks.
-    https://www.geeksforgeeks.org/support-vector-machine-algorithm/.
-
-4.  Rangala, M. (n.d.). *Bank Churn Dataset*. Www.kaggle.com. Retrieved
+1.  Rangala, M. (n.d.). *Bank Churn Dataset*. Www.kaggle.com. Retrieved
     February 20, 2024, from
     https://www.kaggle.com/datasets/rangalamahesh/bank-churn
 
-5.  Jakkula, V. (2006). Tutorial on support vector machine
+2.  Jakkula, V. (2006). Tutorial on support vector machine
     (svm). *School of EECS, Washington State University*, *37*(2.5), 3.
 
-6.  Kecman, V. (2005). Support vector machines-an introduction. In
+3.  Kecman, V. (2005). Support vector machines-an introduction. In
     Support vector machines theory and applications (pp. 1-47). Berlin,
     Heidelberg: Springer Berlin Heidelberg
 
-7.  Yue, S., Li, P., & Hao, P. (2003). SVM classification: Its contents
+4.  Yue, S., Li, P., & Hao, P. (2003). SVM classification: Its contents
     and challenges. Applied Mathematics-A Journal of Chinese
     Universities, 18, 332-342.
 
-8.  Jun, Z. (2021). The development and application of support vector
+5.  Jun, Z. (2021). The development and application of support vector
     machine. In *Journal of Physics: Conference Series* (Vol. 1748, No.
     5, p. 052006). IOP Publishing.
 
-9.  Bhavsar, H., & Panchal, M. H. (2012). A review on support vector
+6.  Bhavsar, H., & Panchal, M. H. (2012). A review on support vector
     machine for data classification. International Journal of Advanced
     Research in Computer Engineering & Technology (IJARCET), 1(10),
     185-189.
 
-10. Deris, A. M., Zain, A. M., & Sallehuddin, R. (2011). Overview of
+7.  Deris, A. M., Zain, A. M., & Sallehuddin, R. (2011). Overview of
     support vector machine in modeling machining performances. *Procedia
     Engineering*, *24*, 308-312.
 
-11. Han, Shuo. “Using SVM with Financial Statement Analysis for
+8.  Han, Shuo. “Using SVM with Financial Statement Analysis for
     Prediction of Stocks.” *Communications of the IIMA Communications of
     the IIMA*, vol. 7, 2007,
     scholarworks.lib.csusb.edu/cgi/viewcontent.cgi?article=1059&context=ciima.
 
-12. Ahmadi, Muhammad Iqbal, et al. “SENTIMENT ANALYSIS ONLINE SHOP on
+9.  Ahmadi, Muhammad Iqbal, et al. “SENTIMENT ANALYSIS ONLINE SHOP on
     the PLAY STORE USING METHOD SUPPORT VECTOR MACHINE (SVM).” *Seminar
     Nasional Informatika (SEMNASIF)*, vol. 1, no. 1, 15 Dec. 2020, pp.
     196–203, jurnal.upnyk.ac.id/index.php/semnasif/article/view/4101.
     Accessed 13 Feb. 2024.
 
-13. Razzaghi, Talayeh, et al. “Multilevel Weighted Support Vector
+10. Razzaghi, Talayeh, et al. “Multilevel Weighted Support Vector
     Machine for Classification on Healthcare Data with Missing Values.”
     *PLOS ONE*, vol. 11, no. 5, 19 May 2016, p. e0155119,
     https://doi.org/10.1371/journal.pone.0155119.
 
-14. Öz, Ersoy, and Hüseyin Kaya. “Support Vector Machines for Quality
+11. Öz, Ersoy, and Hüseyin Kaya. “Support Vector Machines for Quality
     Control of DNA Sequencing.” *Journal of Inequalities and
     Applications*, vol. 2013, no. 1, 4 Mar. 2013,
     https://doi.org/10.1186/1029-242x-2013-85. Accessed 15 June 2021.
 
-15. “Support Vector Machine for Network Intrusion and Cyber-Attack
+12. “Support Vector Machine for Network Intrusion and Cyber-Attack
     Detection \| IEEE Conference Publication \| IEEE Xplore.”
     *Ieeexplore.ieee.org*,
     ieeexplore.ieee.org/abstract/document/8233268. Accessed 13 Feb 2024.
 
-16. Kumar, Sachin, et al. “Precision Sugarcane Monitoring Using SVM
+13. Kumar, Sachin, et al. “Precision Sugarcane Monitoring Using SVM
     Classifier.” *Procedia Computer Science*, vol. 122, 2017, pp.
     881–887, https://doi.org/10.1016/j.procs.2017.11.450. Accessed 25
     July 2019.
 
-17. Javeed, A. et al. (2023) Early prediction of dementia using feature
+14. Javeed, A. et al. (2023) Early prediction of dementia using feature
     Extraction Battery (FEB) and optimized support vector machine (SVM)
     for Classification, MDPI. Available at:
     https://www.mdpi.com/2227-9059/11/2/439 (Accessed: 22 January 2024).
 
-18. Nawal, Y., Oussalah, M., Fergani, B., & Fleury, A. (2022). New
+15. Nawal, Y., Oussalah, M., Fergani, B., & Fleury, A. (2022). New
     incremental SVM algorithms for human activity recognition in smart
     homes. Journal of Ambient Intelligence and Humanized Computing.
     https://doi.org/10.1007/s12652-022-03798-w
 
-19. Zhang, L., Hu, H., & Zhang, D. (2015). A credit risk assessment
+16. Zhang, L., Hu, H., & Zhang, D. (2015). A credit risk assessment
     model based on SVM for small and medium enterprises in supply chain
     finance. *Financial Innovation*, *1*(1).
     <https://doi.org/10.1186/s40854-015-0014-5>
 
-20. Harimoorthy, K., Thangavelu, M. RETRACTED ARTICLE: Multi-disease
+17. Harimoorthy, K., Thangavelu, M. RETRACTED ARTICLE: Multi-disease
     prediction model using improved SVM-radial bias technique in
     healthcare monitoring system. *J Ambient Intell Human
     Comput* **12**, 3715–3723 (2021).
     https://doi.org/10.1007/s12652-019-01652-0
 
-21. J. Liang, Z. Qin, L. Xue, X. Lin and X. Shen, "Verifiable and Secure
+18. J. Liang, Z. Qin, L. Xue, X. Lin and X. Shen, "Verifiable and Secure
     SVM Classification for Cloud-Based Health Monitoring Services," in
     IEEE Internet of Things Journal, vol. 8, no. 23, pp. 17029-17042, 1
     Dec.1, 2021, doi: 10.1109/JIOT.2021.3075540.
 
-22. G. N. Ahmad, H. Fatima, S. Ullah, A. Salah Saidi and Imdadullah,
+19. G. N. Ahmad, H. Fatima, S. Ullah, A. Salah Saidi and Imdadullah,
     "Efficient Medical Diagnosis of Human Heart Diseases Using Machine
     Learning Techniques With and Without GridSearchCV," in IEEE Access,
     vol. 10, pp. 80151-80173, 2022, doi: 10.1109/ACCESS.2022.3165792.
 
-23. Sahara, S., Annida Purnamawati, Sulaeman Hadi Sukmana, Mely
+20. Sahara, S., Annida Purnamawati, Sulaeman Hadi Sukmana, Mely
     Mailasari, Erma Delima Sikumbang, & Puji, E. (2023). PSO
     optimization for analysis of online marketplace products on the SVM
     method. *AIP Conference Proceedings*.
     https://doi.org/10.1063/5.0129404
 
-24. “Prediction of Consumer Purchasing in a Grocery Store Using Machine
+21. “Prediction of Consumer Purchasing in a Grocery Store Using Machine
     Learning Techniques.” *Ieeexplore.ieee.org*,
     ieeexplore.ieee.org/document/7941935.
 
-25. Barakat, Nahla, et al. “Intelligible Support Vector Machines for
+22. Barakat, Nahla, et al. “Intelligible Support Vector Machines for
     Diagnosis of Diabetes Mellitus.” *IEEE Transactions on Information
     Technology in Biomedicine*, vol. 14, no. 4, July 2010, pp.
     1114–1120, https://doi.org/10.1109/titb.2009.2039485.
 
-26. “Applying Support Vector Machine to Electronic Health Records for
+23. “Applying Support Vector Machine to Electronic Health Records for
     Cancer Classification \| IEEE Conference Publication \| IEEE
     Xplore.” *Ieeexplore.ieee.org*,
     ieeexplore.ieee.org/abstract/document/8732906.
 
-27. “An Effective Intrusion Detection Approach Using SVM with Naïve
+24. “An Effective Intrusion Detection Approach Using SVM with Naïve
     Bayes Feature Embedding.” *Computers & Security*, vol. 103, 1 Apr.
     2021, p. 102158,
     www.sciencedirect.com/science/article/pii/S0167404820304314,
     https://doi.org/10.1016/j.cose.2020.102158.
 
-28. Hosseini, Soodeh, and Behnam Mohammad Hasani Zade. “New Hybrid
+25. Hosseini, Soodeh, and Behnam Mohammad Hasani Zade. “New Hybrid
     Method for Attack Detection Using Combination of Evolutionary
     Algorithms, SVM, and ANN.” *Computer Networks*, vol. 173, May
     2020, p. 107168, https://doi.org/10.1016/j.comnet.2020.107168.
