@@ -22,8 +22,6 @@ editor:
 
 ## Introduction
 
-### Support Vector Machines.
-
 Support Vector Machines (SVMs) are a type of supervised learning
 algorithm that can be used for classification or regression tasks. The
 main idea behind SVMs is to find a hyperplane that maximally separates
@@ -46,39 +44,6 @@ the hyperplane becomes a two-dimensional plane. It becomes difficult to
 imagine when the number of features exceeds 3.
 
 ![](images/clipboard-4038275398.png)
-
-### **Mathematical Intuition of Support Vector Machine**
-
-Consider a binary classification task where there are two classes,
-denoted by the labels +1 and -1. The input feature vectors (X) and the
-matching class labels (Y) comprise our training dataset.
-
-Equation for hyperplane can be written as:
-
-$w^Tx+b=0$
-
-The vector W represents the normal vector to the hyperplane. i.e the
-direction perpendicular to the hyperplane. The parameter **b** in the
-equation represents the offset or distance of the hyperplane from the
-origin along the normal vector **w**.
-
-$d_i = \frac{w^Tx_i + b}{\|w\|}$
-
-where \|\|w\|\| represents the Euclidean norm of the weight vector w.
-Euclidean norm of the normal vector W
-
-$\hat{y} =\begin{cases} 0 & \text{if } w^T x + b \geq 0 \\ 1 & \text{if } w^T x + b < 0 \end{cases}$
-
-### kernel function in SVM
-
-SVM kernel is a function that takes low-dimensional input space and
-transforms it into higher-dimensional space, ie it converts nonseparable
-problems to separable problems. It is mostly useful in non-linear
-separation problems. Simply put the kernel, does some extremely complex
-data transformations and then finds out the process to separate the data
-based on the labels or outputs defined.
-
-$Linear : K(w,b)=w^Tx+b$
 
 ## Literature Review
 
@@ -153,7 +118,7 @@ holders at ABC Multinational Bank, with the ultimate goal of predicting
 customer churn. The dataset comprises the following columns:
 
 | Column Name        | Description                                                                        |
-|-------------------|-----------------------------------------------------|
+|------------------------|-----------------------------------------------|
 | `customer_id`      | A unique identifier for each customer, not used in the analysis.                   |
 | `credit_score`     | A numerical representation of the customer's creditworthiness.                     |
 | `country`          | The country in which the customer resides.                                         |
@@ -167,6 +132,45 @@ customer churn. The dataset comprises the following columns:
 | `estimated_salary` | The estimated annual salary of the customer.                                       |
 | `churn`            | The target variable, indicating customer churn (1 for churned, 0 for not churned). |
 
+### Methodology
+
+**Mathematical Intuition of Support Vector Machine**
+
+Consider a binary classification task where there are two classes,
+denoted by the labels +1 and -1. The input feature vectors (X) and the
+matching class labels (Y) comprise our training dataset.
+
+Equation for hyperplane can be written as:
+
+$w^Tx+b=0$
+
+The vector W represents the normal vector to the hyperplane. i.e the
+direction perpendicular to the hyperplane. The parameter **b** in the
+equation represents the offset or distance of the hyperplane from the
+origin along the normal vector **w**.
+
+$d_i = \frac{w^Tx_i + b}{\|w\|}$
+
+where \|\|w\|\| represents the Euclidean norm of the weight vector w.
+Euclidean norm of the normal vector W
+
+$\hat{y} =\begin{cases} 0 & \text{if } w^T x + b \geq 0 \\ 1 & \text{if } w^T x + b < 0 \end{cases}$
+
+**kernel function in SVM**
+
+SVM kernel is a function that takes low-dimensional input space and
+transforms it into higher-dimensional space, ie it converts nonseparable
+problems to separable problems. It is mostly useful in non-linear
+separation problems. Simply put the kernel, does some extremely complex
+data transformations and then finds out the process to separate the data
+based on the labels or outputs defined.
+
+$Linear : K(w,b)=w^Tx+b$
+
+### Data Analysis
+
+**Loading Libraries**
+
 ```{r}
 library(tidyverse)
 library(dplyr)
@@ -174,6 +178,8 @@ library(ggplot2)
 #install.packages("corrplot")
 library(corrplot)
 ```
+
+**Load Data**
 
 ```{r}
 df <- read.csv("dataset/train.csv")
@@ -183,205 +189,436 @@ df <- read.csv("dataset/train.csv")
 head(df)
 ```
 
+**Summary Statistics**
+
 ```{r}
 summary(select(df, CreditScore, Age, Tenure, Balance, NumOfProducts, EstimatedSalary))
-
 ```
+
+**Credit Score:**
+
+-   The Credit Score ranges from a minimum of 350 to a maximum of 850.
+
+-   The median Credit Score is 659, indicating that half of the
+    customers have a score below 659 and half have a score above.
+
+-   The mean Credit Score is approximately 656.5, suggesting that the
+    average creditworthiness of customers is in the mid-range.
+
+-   The 1st quartile (25th percentile) is 597, and the 3rd quartile
+    (75th percentile) is 710, indicating that 50% of customers have a
+    Credit Score between 597 and 710.
+
+**Age:**
+
+-   The Age of customers ranges from 18 to 92 years. The median age is
+    37 years, meaning half of the customers are younger than 37 and half
+    are older.
+
+-   The mean age is approximately 38.13 years, indicating that the
+    average customer is in their late thirties.
+
+-   The distribution of Age is slightly right-skewed, as the mean is
+    slightly higher than the median.
+
+**Tenure:**
+
+-   Tenure, or the number of years customers have been with the bank,
+    ranges from 0 to 10 years.
+
+-   The median tenure is 5 years, indicating that half of the customers
+    have been with the bank for less than 5 years and half for more.
+
+-   The mean tenure is approximately 5.02 years, suggesting that the
+    average customer has been with the bank for around 5 years.
+
+**Balance:**
+
+-   The account Balance ranges from a minimum of 0 to a maximum of
+    250,898.
+
+-   The median balance is 0, indicating that at least half of the
+    customers have no balance in their account.
+
+-   The mean balance is approximately 55,478, suggesting that while many
+    customers have low or zero balances, some have significant amounts
+    in their accounts.
+
+**Number of Products:**
+
+-   The Number of Products customers have with the bank ranges from 1 to
+
+    4.  
+
+-   The median number of products is 2, meaning that half of the
+    customers have 2 or fewer products with the bank.
+
+-   The mean number of products is approximately 1.554, indicating that
+    on average, customers have between 1 and 2 products with the bank.
+
+**Estimated Salary:**
+
+-   The Estimated Salary ranges from a minimum of 11.58 to a maximum of
+    199,992.48.
+
+-   The median estimated salary is 117,948, suggesting that half of the
+    customers have an estimated salary below this amount and half above.
+
+-   The mean estimated salary is approximately 112,574.82, indicating
+    that the average estimated salary of customers is around 112k.
+
+**Count Of Categorical value types**
 
 ```{r}
 sapply(df[,c('Geography', 'Gender', 'HasCrCard', 'IsActiveMember', 'Exited')], function(x) length(unique(x)))
 ```
 
+**Checking null values**
+
 ```{r}
 colSums(is.na(df))
 ```
 
+There are no null values in the data.
+
+**Distribution of target variable**
+
 ```{r}
 table(df$Exited)
-
 ```
 
+We can see number of customers exited are more compared to number of
+customers not exited. So there is a quite imbalance in data which needs
+to be addressed while building the model.
+
+**Distribution of target variable across Geography.**
+
 ```{r}
-# Relationship between Geography and Exited
+
 table(df$Geography, df$Exited)
 
 ```
+
+**France:**
+
+-   A total of 94,215 customers are from France.
+-   Out of these, 78,643 customers have not exited the bank (retained),
+-   while 15,572 customers have exited (churned).
+-   The churn rate for France is approximately 16.53%.
+
+**Germany:**
+
+-   A total of 34,606 customers are from Germany.
+-   Out of these, 21,492 customers have not exited the bank, while
+    13,114 customers have exited.
+-   The churn rate for Germany is approximately 37.89%.
+
+**Spain:**
+
+-   A total of 36,213 customers are from Spain.
+-   Out of these, 29,978 customers have not exited the bank, while 6,235
+    customers have exited.
+-   The churn rate for Spain is approximately 17.21%.
+
+**Which Gender has highest Credit Score?**
 
 ```{r}
 aggregate(df$CreditScore, by = list(df$Gender), FUN = mean)
 ```
 
-```{r}
-# Correlation between numerical variables
-cor(select(df, CreditScore, Age, Tenure, Balance, NumOfProducts, EstimatedSalary))
-```
+**Observations:**
+
+-   The difference in average credit scores between male and female
+    customers is minimal, indicating that gender does not significantly
+    impact creditworthiness in this dataset.
+
+-   Both genders have an average credit score in the mid-650s, which is
+    considered a fair credit score range.
+
+**Distribution of Age.**
 
 ```{r}
-# Histogram of Age
 ggplot(df, aes(x = Age)) + geom_histogram(binwidth = 5, fill = "blue", color = "black")
-
 ```
+
+**Observations:**
+
+-   The largest concentration of customers falls within the 30 to
+    40-year-old range, indicating that the majority of customers are in
+    their early to mid-career stages.
+
+-   There is a significant drop in frequency as age increases,
+    especially beyond 50 years. This suggests that the customer base
+    skews younger.
+
+-   The distribution is right-skewed, meaning there are fewer older
+    customers (those over 60) compared to younger customers.
+
+-   There is a small number of customers in the youngest age bracket
+    (under 25 years) and the oldest (over 75 years).
+
+```{r}
+ggplot(df, aes(x = EstimatedSalary)) + geom_histogram(binwidth = 5, fill = "blue", color = "black")
+```
+
+**Observations:**
+
+-   The distribution is quite uniform across different salary ranges,
+    with no distinct peaks that would indicate a concentration of
+    individuals around a specific salary bracket.
+
+-   There are frequent spikes throughout the distribution, which may
+    suggest that the data contains many unique values with small
+    frequencies. This could be indicative of precise salary estimations
+    rather than rounded figures.
+
+-   The salaries range from very low values close to 0 up to 200,000,
+    indicating a diverse group from potentially different economic
+    backgrounds or job roles.
+
+-   There is no obvious concentration of data points around the lower,
+    middle, or upper salary range, which is unusual for income data
+    where one typically expects to see more of a bell-shaped
+    distribution centered around a median salary range.
+
+**Comparing the distribution of account balances between customers who
+have exited and customer who have not exited.**
 
 ```{r}
 ggplot(df, aes(x = as.factor(Exited), y = Balance)) + geom_boxplot()
-
 ```
+
+**Observations:**
+
+-   **Balance Distribution:**
+
+    -   The y-axis represents the balance on customer accounts, which
+        seems to range from 0 to a bit over 250,000.
+
+    -   Both boxes have a similar interquartile range (IQR), which is
+        the range between the first quartile (25th percentile) and the
+        third quartile (75th percentile), represented by the height of
+        the boxes. This suggests that the middle 50% of balances are
+        similarly distributed between both groups.
+
+    -   The median, indicated by the line within each box, is roughly at
+        the same level for both groups, suggesting that the central
+        tendency of balance is similar regardless of whether the
+        customer has exited or not.
+
+-   **Outliers:**
+
+    -   There are visible outliers for both groups, indicated by the
+        points beyond the whiskers of the box plot. These outliers
+        represent customers with balances significantly higher than the
+        general population of the dataset.
+
+**How the distribution of the number of products varies across different
+geographical regions?**
 
 ```{r}
 ggplot(df, aes(x = Geography, fill = as.factor(NumOfProducts))) + geom_bar(position = "dodge")
-
 ```
+
+**Observations:**
+
+1.  **France:**
+
+    -   France has the highest count of customers using one product,
+        followed closely by those using two products. The number of
+        customers using three and four products is significantly lower.
+
+2.  **Germany:**
+
+    -   Germany shows a similar pattern to France with one and two
+        products being the most common among customers. However, the
+        count for one product is notably lower than in France, whereas
+        the count for two products is slightly higher.
+
+3.  **Spain:**
+
+    -   Spain's pattern mirrors that of France and Germany, with one
+        product being the most common, followed by two products. Again,
+        three and four products are used by a considerably smaller
+        number of customers.
+
+**Pairplot of Age vs Estimated Salary and also checking which age group
+and salary range have exited the bank.**
 
 ```{r}
-# Scatter plot of Age vs EstimatedSalary colored by Exited
 ggplot(df, aes(x = Age, y = EstimatedSalary, color = as.factor(Exited))) + geom_point()
-
 ```
+
+**Observations:**
+
+1.  There doesn't appear to be a clear pattern or correlation between
+    Age and Estimated Salary with customer churn, as the exited and
+    non-exited customers are interspersed throughout the plot without
+    any distinct clustering.
+
+2.  Customers who have exited are spread across all ages and salary
+    levels, but there seems to be a slightly higher concentration of
+    churned customers in the 40 to 50 age range.
+
+**Pairplot of Age vs Credit Score and also checking which age group and
+Credit Score range have exited the bank.**
+
+```{r}
+ggplot(df, aes(x = Age, y = CreditScore , color = as.factor(Exited))) + geom_point()
+```
+
+**Observations:**
+
+1.  There is a wide distribution of Credit Scores across different ages
+    with no clear pattern indicating that Credit Score by itself may not
+    be a strong predictor of customer exit.
+
+2.  Both exited and non-exited customers are found across the entire
+    range of Credit Scores and Age, but there is a noticeable density of
+    exited customers (blue dots) in the middle age range, particularly
+    between ages 40 and 50.
+
+**Pairplot of EstimatedSalary vs Credit Score and also checking what
+Estimated Salary range and Credit Score range have exited the bank.**
+
+```{r}
+ggplot(df, aes(x = EstimatedSalary, y = CreditScore , color = as.factor(Exited))) + geom_point()
+```
+
+**Observations:**
+
+The scatter plot shows no clear correlation between Credit Score and
+Estimated Salary in predicting customer churn, with both customers who
+exited and those who did not evenly dispersed across all ranges of
+Salary and Credit Scores.
+
+**Correlation Plot**
 
 ```{r}
 corr_matrix <- cor(select(df, CreditScore, Age, Tenure, Balance, NumOfProducts, EstimatedSalary))
 corrplot(corr_matrix, method = "circle")
 ```
 
-```{r}
+**Observations:**
 
-```
-
-```{r}
-
-```
-
-```{r}
-
-```
-
-```{r}
-
-```
-
-```{r}
-
-```
+There seems to be a noticeable positive correlation between Age and
+Balance, and a negative correlation between NumOfProducts and Balance.
 
 ## References
 
-1.  Rangala, M. (n.d.). *Bank Churn Dataset*. Www.kaggle.com. Retrieved
-    February 20, 2024, from
-    https://www.kaggle.com/datasets/rangalamahesh/bank-churn
-
-2.  Jakkula, V. (2006). Tutorial on support vector machine
+1.  Jakkula, V. (2006). Tutorial on support vector machine
     (svm). *School of EECS, Washington State University*, *37*(2.5), 3.
 
-3.  Kecman, V. (2005). Support vector machines-an introduction. In
+2.  Kecman, V. (2005). Support vector machines-an introduction. In
     Support vector machines theory and applications (pp. 1-47). Berlin,
     Heidelberg: Springer Berlin Heidelberg
 
-4.  Yue, S., Li, P., & Hao, P. (2003). SVM classification: Its contents
+3.  Yue, S., Li, P., & Hao, P. (2003). SVM classification: Its contents
     and challenges. Applied Mathematics-A Journal of Chinese
     Universities, 18, 332-342.
 
-5.  Jun, Z. (2021). The development and application of support vector
+4.  Jun, Z. (2021). The development and application of support vector
     machine. In *Journal of Physics: Conference Series* (Vol. 1748, No.
     5, p. 052006). IOP Publishing.
 
-6.  Bhavsar, H., & Panchal, M. H. (2012). A review on support vector
+5.  Bhavsar, H., & Panchal, M. H. (2012). A review on support vector
     machine for data classification. International Journal of Advanced
     Research in Computer Engineering & Technology (IJARCET), 1(10),
     185-189.
 
-7.  Deris, A. M., Zain, A. M., & Sallehuddin, R. (2011). Overview of
+6.  Deris, A. M., Zain, A. M., & Sallehuddin, R. (2011). Overview of
     support vector machine in modeling machining performances. *Procedia
     Engineering*, *24*, 308-312.
 
-8.  Han, Shuo. “Using SVM with Financial Statement Analysis for
+7.  Han, Shuo. “Using SVM with Financial Statement Analysis for
     Prediction of Stocks.” *Communications of the IIMA Communications of
     the IIMA*, vol. 7, 2007,
     scholarworks.lib.csusb.edu/cgi/viewcontent.cgi?article=1059&context=ciima.
 
-9.  Ahmadi, Muhammad Iqbal, et al. “SENTIMENT ANALYSIS ONLINE SHOP on
+8.  Ahmadi, Muhammad Iqbal, et al. “SENTIMENT ANALYSIS ONLINE SHOP on
     the PLAY STORE USING METHOD SUPPORT VECTOR MACHINE (SVM).” *Seminar
     Nasional Informatika (SEMNASIF)*, vol. 1, no. 1, 15 Dec. 2020, pp.
     196–203, jurnal.upnyk.ac.id/index.php/semnasif/article/view/4101.
     Accessed 13 Feb. 2024.
 
-10. Razzaghi, Talayeh, et al. “Multilevel Weighted Support Vector
+9.  Razzaghi, Talayeh, et al. “Multilevel Weighted Support Vector
     Machine for Classification on Healthcare Data with Missing Values.”
     *PLOS ONE*, vol. 11, no. 5, 19 May 2016, p. e0155119,
     https://doi.org/10.1371/journal.pone.0155119.
 
-11. Öz, Ersoy, and Hüseyin Kaya. “Support Vector Machines for Quality
+10. Öz, Ersoy, and Hüseyin Kaya. “Support Vector Machines for Quality
     Control of DNA Sequencing.” *Journal of Inequalities and
     Applications*, vol. 2013, no. 1, 4 Mar. 2013,
     https://doi.org/10.1186/1029-242x-2013-85. Accessed 15 June 2021.
 
-12. “Support Vector Machine for Network Intrusion and Cyber-Attack
+11. “Support Vector Machine for Network Intrusion and Cyber-Attack
     Detection \| IEEE Conference Publication \| IEEE Xplore.”
     *Ieeexplore.ieee.org*,
     ieeexplore.ieee.org/abstract/document/8233268. Accessed 13 Feb 2024.
 
-13. Kumar, Sachin, et al. “Precision Sugarcane Monitoring Using SVM
+12. Kumar, Sachin, et al. “Precision Sugarcane Monitoring Using SVM
     Classifier.” *Procedia Computer Science*, vol. 122, 2017, pp.
     881–887, https://doi.org/10.1016/j.procs.2017.11.450. Accessed 25
     July 2019.
 
-14. Javeed, A. et al. (2023) Early prediction of dementia using feature
+13. Javeed, A. et al. (2023) Early prediction of dementia using feature
     Extraction Battery (FEB) and optimized support vector machine (SVM)
     for Classification, MDPI. Available at:
     https://www.mdpi.com/2227-9059/11/2/439 (Accessed: 22 January 2024).
 
-15. Nawal, Y., Oussalah, M., Fergani, B., & Fleury, A. (2022). New
+14. Nawal, Y., Oussalah, M., Fergani, B., & Fleury, A. (2022). New
     incremental SVM algorithms for human activity recognition in smart
     homes. Journal of Ambient Intelligence and Humanized Computing.
     https://doi.org/10.1007/s12652-022-03798-w
 
-16. Zhang, L., Hu, H., & Zhang, D. (2015). A credit risk assessment
+15. Zhang, L., Hu, H., & Zhang, D. (2015). A credit risk assessment
     model based on SVM for small and medium enterprises in supply chain
     finance. *Financial Innovation*, *1*(1).
     <https://doi.org/10.1186/s40854-015-0014-5>
 
-17. Harimoorthy, K., Thangavelu, M. RETRACTED ARTICLE: Multi-disease
+16. Harimoorthy, K., Thangavelu, M. RETRACTED ARTICLE: Multi-disease
     prediction model using improved SVM-radial bias technique in
     healthcare monitoring system. *J Ambient Intell Human
     Comput* **12**, 3715–3723 (2021).
     https://doi.org/10.1007/s12652-019-01652-0
 
-18. J. Liang, Z. Qin, L. Xue, X. Lin and X. Shen, "Verifiable and Secure
+17. J. Liang, Z. Qin, L. Xue, X. Lin and X. Shen, "Verifiable and Secure
     SVM Classification for Cloud-Based Health Monitoring Services," in
     IEEE Internet of Things Journal, vol. 8, no. 23, pp. 17029-17042, 1
     Dec.1, 2021, doi: 10.1109/JIOT.2021.3075540.
 
-19. G. N. Ahmad, H. Fatima, S. Ullah, A. Salah Saidi and Imdadullah,
+18. G. N. Ahmad, H. Fatima, S. Ullah, A. Salah Saidi and Imdadullah,
     "Efficient Medical Diagnosis of Human Heart Diseases Using Machine
     Learning Techniques With and Without GridSearchCV," in IEEE Access,
     vol. 10, pp. 80151-80173, 2022, doi: 10.1109/ACCESS.2022.3165792.
 
-20. Sahara, S., Annida Purnamawati, Sulaeman Hadi Sukmana, Mely
+19. Sahara, S., Annida Purnamawati, Sulaeman Hadi Sukmana, Mely
     Mailasari, Erma Delima Sikumbang, & Puji, E. (2023). PSO
     optimization for analysis of online marketplace products on the SVM
     method. *AIP Conference Proceedings*.
     https://doi.org/10.1063/5.0129404
 
-21. “Prediction of Consumer Purchasing in a Grocery Store Using Machine
+20. “Prediction of Consumer Purchasing in a Grocery Store Using Machine
     Learning Techniques.” *Ieeexplore.ieee.org*,
     ieeexplore.ieee.org/document/7941935.
 
-22. Barakat, Nahla, et al. “Intelligible Support Vector Machines for
+21. Barakat, Nahla, et al. “Intelligible Support Vector Machines for
     Diagnosis of Diabetes Mellitus.” *IEEE Transactions on Information
     Technology in Biomedicine*, vol. 14, no. 4, July 2010, pp.
     1114–1120, https://doi.org/10.1109/titb.2009.2039485.
 
-23. “Applying Support Vector Machine to Electronic Health Records for
+22. “Applying Support Vector Machine to Electronic Health Records for
     Cancer Classification \| IEEE Conference Publication \| IEEE
     Xplore.” *Ieeexplore.ieee.org*,
     ieeexplore.ieee.org/abstract/document/8732906.
 
-24. “An Effective Intrusion Detection Approach Using SVM with Naïve
+23. “An Effective Intrusion Detection Approach Using SVM with Naïve
     Bayes Feature Embedding.” *Computers & Security*, vol. 103, 1 Apr.
     2021, p. 102158,
     www.sciencedirect.com/science/article/pii/S0167404820304314,
     https://doi.org/10.1016/j.cose.2020.102158.
 
-25. Hosseini, Soodeh, and Behnam Mohammad Hasani Zade. “New Hybrid
+24. Hosseini, Soodeh, and Behnam Mohammad Hasani Zade. “New Hybrid
     Method for Attack Detection Using Combination of Evolutionary
     Algorithms, SVM, and ANN.” *Computer Networks*, vol. 173, May
     2020, p. 107168, https://doi.org/10.1016/j.comnet.2020.107168.
