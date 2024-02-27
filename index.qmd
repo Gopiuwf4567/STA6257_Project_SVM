@@ -51,58 +51,75 @@ Support Vector Machines (SVM) have emerged as a potent tool in the realm
 of supervised learning, offering a robust mathematical framework for
 both classification and regression tasks. With a foundation rooted in
 principles such as structural risk minimization and kernel functions
-(Jakkula, 2006), SVM has demonstrated exceptional generalization
-capabilities, adeptly handling non-linear decision boundaries through
-kernel tricks (Jun, 2021; Deris, 2011). Despite challenges like
-computational cost and scalability (Bhavsar, 2012), the evolution of SVM
-has led to significant contributions in diverse fields, including
-pattern recognition, computer vision (Kecman, 2005), and even
+[(Jakkula,
+2006)](https://course.ccs.neu.edu/cs5100f11/resources/jakkula.pdf), SVM
+has demonstrated exceptional generalization capabilities, adeptly
+handling non-linear decision boundaries through kernel tricks [(Jun,
+2021;](https://iopscience.iop.org/article/10.1088/1742-6596/1748/5/052006/meta)
+[Deris,
+2011)](https://www.sciencedirect.com/science/article/pii/S1877705811054993).
+Despite challenges like computational cost and scalability [(Bhavsar,
+2012)](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=d683a971524a0d76382ce335321b4b8189bc8299),
+the evolution of SVM has led to significant contributions in diverse
+fields, including pattern recognition, computer vision [(Kecman,
+2005)](https://link.springer.com/chapter/10.1007/10984697_1), and even
 agriculture, where it aids in optimizing crop yield and disease
-identification (Kumar et al., 2017). The ongoing advancements in SVM
-research are geared towards refining algorithms and broadening their
-application spectrum, especially in the context of burgeoning data
-volumes (Yue, 2003).
+identification [(Kumar et al.,
+2017)](https://doi.org/10.1016/j.procs.2017.11.450). The ongoing
+advancements in SVM research are geared towards refining algorithms and
+broadening their application spectrum, especially in the context of
+burgeoning data volumes [(Yue,
+2003)](https://link.springer.com/article/10.1007/s11766-003-0059-5).
 
 In the financial and healthcare sectors, SVM has proven its efficacy in
 various applications. It has been utilized to construct reliable stock
 market prediction models by analyzing financial indices like Earnings
-Per Share (EPS) and Net Profit Growth Rate (NPGR) (Han, 2007). In
+Per Share (EPS) and Net Profit Growth Rate (NPGR) [(Han,
+2007)](https://scholarworks.lib.csusb.edu/ciima/vol7/iss4/8/). In
 healthcare, SVM has been instrumental in developing advanced diagnostic
 tools, such as the optimized SVM model for early dementia prediction
-(Javeed et al., 2023) and the multi-disease prediction model using an
-improved SVM-radial bias kernel approach (Harimoorthy & Thangavelu,
-2021). These innovations underscore the potential of machine learning in
-revolutionizing healthcare by facilitating early diagnosis and
-personalized treatment plans.
+[(Javeed et al., 2023)](https://www.mdpi.com/2227-9059/11/2/439) and the
+multi-disease prediction model using an improved SVM-radial bias kernel
+approach [(Harimoorthy & Thangavelu,
+2021)](https://doi.org/10.1007/s12652-019-01652-0). These innovations
+underscore the potential of machine learning in revolutionizing
+healthcare by facilitating early diagnosis and personalized treatment
+plans.
 
 SVM's application extends to domains like online retail and network
 security, where it addresses complex challenges with remarkable
 efficiency. In online marketplaces, SVM combined with Particle Swarm
 Optimization has enhanced the accuracy of text classification for
-customer reviews (Sahara et al., 2023), providing valuable insights for
-sellers. In the realm of network security, innovative approaches such as
-combining SVM with naïve Bayes feature embedding have been proposed for
-intrusion detection, achieving high accuracy rates in identifying
-network threats (Computers & Security, 2021). Moreover, the development
-of hybrid methods for attack detection, which integrate SVM features
-with evolutionary algorithms and artificial neural networks, has shown
-significant promise in reducing dimensionality and training time while
-maintaining high detection accuracy (Computer Networks, 2020).
+customer reviews [(Sahara et al.,
+2023)](https://doi.org/10.1063/5.0129404), providing valuable insights
+for sellers. In the realm of network security, innovative approaches
+such as combining SVM with naïve Bayes feature embedding have been
+proposed for intrusion detection, achieving high accuracy rates in
+identifying network threats [(Jie Gu et al,
+2021)](https://www.sciencedirect.com/science/article/abs/pii/S0167404820304314?via%3Dihub).
+Moreover, the development of hybrid methods for attack detection, which
+integrate SVM features with evolutionary algorithms and artificial
+neural networks, has shown significant promise in reducing
+dimensionality and training time while maintaining high detection
+accuracy [(Soodeh Hosseini et al,
+2020)](https://www.sciencedirect.com/science/article/abs/pii/S1389128619302191?via%3Dihub)
 
 Machine learning techniques, particularly SVM, are revolutionizing
 various fields by addressing complex challenges with precision and
 efficiency. In healthcare, SVM has been applied to electronic health
 records for cancer classification, achieving high accuracy rates in
-identifying different types of malignancies (IEEE Xplore, 2021).
+identifying different types of malignancies [(K. Ghanem et al,
+2021)](https://ieeexplore.ieee.org/abstract/document/8233268).
 Furthermore, SVM's versatility is evident in its application across
 domains such as finance, where it has been used to assess credit risk
-for small and medium enterprises in supply chain finance (Zhang, Hu, &
-Zhang, 2015), and in cloud-based services, where it ensures data
-confidentiality and decision verifiability in health monitoring systems
-(Liang et al., 2021). These advancements highlight the transformative
-potential of machine learning techniques in enhancing diagnostic
-accuracy, optimizing financial assessments, and ensuring secure
-cloud-based services.
+for small and medium enterprises in supply chain finance [(Zhang, Hu, &
+Zhang, 2015)](https://doi.org/10.1186/s40854-015-0014-5), and in
+cloud-based services, where it ensures data confidentiality and decision
+verifiability in health monitoring systems [(Liang et al.,
+2021)](https://ieeexplore.ieee.org/abstract/document/9415746). These
+advancements highlight the transformative potential of machine learning
+techniques in enhancing diagnostic accuracy, optimizing financial
+assessments, and ensuring secure cloud-based services.
 
 ## Dataset
 
