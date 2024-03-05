@@ -35,6 +35,8 @@ separation in the data.
 
 ![](images/clipboard-4268047144.png)
 
+Fig: -
+
 Hyperplanes are decision boundaries that help classify the data points.
 Data points falling on either side of the hyperplane can be attributed
 to different classes. Also, the dimension of the hyperplane depends upon
@@ -135,7 +137,7 @@ holders at ABC Multinational Bank, with the ultimate goal of predicting
 customer churn. The dataset comprises the following columns:
 
 | Column Name        | Description                                                                        |
-|------------------------|-----------------------------------------------|
+|--------------------------|----------------------------------------------|
 | `customer_id`      | A unique identifier for each customer, not used in the analysis.                   |
 | `credit_score`     | A numerical representation of the customer's creditworthiness.                     |
 | `country`          | The country in which the customer resides.                                         |
@@ -175,14 +177,114 @@ $\hat{y} =\begin{cases} 0 & \text{if } w^T x + b \geq 0 \\ 1 & \text{if } w^T x 
 
 **kernel function in SVM**
 
-SVM kernel is a function that takes low-dimensional input space and
-transforms it into higher-dimensional space, ie it converts nonseparable
-problems to separable problems. It is mostly useful in non-linear
-separation problems. Simply put the kernel, does some extremely complex
-data transformations and then finds out the process to separate the data
-based on the labels or outputs defined.
+In Support Vector Machines (SVM), the kernel function plays a crucial
+role in transforming the input feature space into a higher-dimensional
+space where the data can be linearly separated. This is particularly
+useful in cases where the data is not linearly separable in its original
+space. The kernel function computes the dot product between the feature
+vectors in this higher-dimensional space without explicitly mapping the
+vectors into that space, which is known as the "kernel trick."
 
-$Linear : K(w,b)=w^Tx+b$
+Common types of kernel functions include:
+
+-   **Linear Kernel**: $K(w,b)=w^Tx+b$. This is the simplest form of the
+    kernel, used when the data is linearly separable.
+
+-   **Polynomial Kernel**: $K(w, b) = (1 + w^T.x b)^d$. This kernel maps
+    the input features into a polynomial feature space, allowing for
+    polynomial decision boundaries.
+
+-   **Radial Basis Function (RBF) Kernel**:
+    $K(w, b) = \exp(-\gamma |w.x - b|^2)$. Also known as the Gaussian
+    kernel, it maps the features into an infinite-dimensional space,
+    providing a lot of flexibility for non-linear decision boundaries.
+
+Each kernel function has its own set of parameters that need to be tuned
+for optimal performance. The choice of kernel function and its
+parameters can significantly impact the SVM model's ability to capture
+the underlying patterns in the data.
+
+### **Margin and Support Vectors**
+
+The margin in SVM is defined as the distance between the separating
+hyperplane and the nearest data points from each class, known as the
+support vectors. The goal of SVM is to find the hyperplane that
+maximizes this margin, as a larger margin is associated with better
+generalization ability of the model.
+
+Support vectors are the data points that lie closest to the decision
+boundary and are critical in defining the position and orientation of
+the hyperplane. These are the points that directly influence the shape
+of the decision boundary, as any small change in their position can
+alter the hyperplane. The SVM model is said to be "sparse" because only
+the support vectors contribute to defining the hyperplane, while other
+data points have no influence.
+
+### **Objective Function and Optimization**
+
+The objective function that SVM optimizes is a combination of maximizing
+the margin and minimizing the classification error. This is achieved
+through the minimization of the following objective function:
+
+​$min_{w, b} \frac{1}{2} \|w\|^2 + C \sum_{i=1}^{n} \xi_i$
+
+Subject to the constraints:
+
+$y_i (w^T x_i + b) \geq 1 - \xi_i \quad \text{and} \quad \xi_i \geq 0 \quad \text{for all } i$
+
+where $w$ is the weight vector, $b$ is the bias term, $C$ is the
+regularization parameter, $\xi_i$ are the slack variables representing
+the degree of misclassification of the $i$-th data point, and $y_i$ are
+the class labels.
+
+The hinge loss function is used in SVM to penalize misclassifications.
+It is defined as:
+
+**Hinge loss** = $\max(0, 1 - y_i (w^T x_i + b))$
+
+The hinge loss is zero for correctly classified points that are outside
+the margin, and it increases linearly for points that are on the wrong
+side of the hyperplane or within the margin.
+
+The optimization of the objective function involves finding the values
+of $w$ and $b$ that minimize the function, subject to the constraints.
+This is typically done using quadratic programming techniques.
+
+### **Data Preprocessing**
+
+In the initial stage of our analysis, we undertook several preprocessing
+steps to ensure the data was suitable for modeling. Since our dataset
+did not contain any null values, we focused on encoding categorical
+variables and scaling numerical features. The categorical variables,
+such as 'Country' and 'Gender,' were encoded using one-hot encoding to
+convert them into a format that could be easily used by our machine
+learning algorithms. For numerical features like 'Credit Score,' 'Age,'
+'Tenure,' 'Balance,' and 'Estimated Salary,' we applied standard scaling
+to normalize their distribution, ensuring that no single feature would
+dominate the model due to its scale.
+
+### **Exploratory Data Analysis (EDA)**
+
+Our Exploratory Data Analysis (EDA) aimed to uncover patterns, detect
+anomalies, and test hypotheses about our data. We started with summary
+statistics to understand the central tendency, dispersion, and shape of
+the dataset's distributions. For instance, we observed that the Credit
+Score ranged from 350 to 850, with a median of 659, and the Age of
+customers varied from 18 to 92 years, with a median age of 37 years.
+
+We then proceeded to visualize the distribution of key variables using
+distribution plots. This helped us identify the skewness in the 'Age'
+distribution and the uniform distribution of 'Estimated Salary.' Pair
+plots were employed to explore the relationships between variables like
+'Age' vs. 'Estimated Salary' and 'Age' vs. 'Credit Score,' providing
+insights into how different factors might influence customer churn.
+
+Through our EDA, we also investigated the distribution of the target
+variable 'churn' across different geographical regions and examined how
+the number of products varied across different regions. Correlation
+plots were utilized to identify potential relationships between
+features, revealing a positive correlation between 'Age' and 'Balance,'
+and a negative correlation between 'NumOfProducts' and 'Balance.'
 
 ### Data Analysis
 
@@ -194,6 +296,8 @@ library(dplyr)
 library(ggplot2)
 #install.packages("corrplot")
 library(corrplot)
+library(caret)
+library(smotefamily)
 ```
 
 **Load Data**
@@ -374,6 +478,8 @@ ggplot(df, aes(x = Age)) + geom_histogram(binwidth = 5, fill = "blue", color = "
 -   There is a small number of customers in the youngest age bracket
     (under 25 years) and the oldest (over 75 years).
 
+**Distribution of Estimated Salary:**
+
 ```{r}
 ggplot(df, aes(x = EstimatedSalary)) + geom_histogram(binwidth = 5, fill = "blue", color = "black")
 ```
@@ -520,6 +626,120 @@ corrplot(corr_matrix, method = "circle")
 
 There seems to be a noticeable positive correlation between Age and
 Balance, and a negative correlation between NumOfProducts and Balance.
+
+**Churn Rate by Geography**
+
+```{r}
+churn_by_country <- df %>%
+  group_by(Geography) %>%
+  summarise(
+    Total_Customers = n(),
+    Churned_Customers = sum(Exited),
+    Churn_Rate = (sum(Exited) / n()) * 100
+  )
+```
+
+```{r}
+print(churn_by_country)
+```
+
+```{r}
+ggplot(churn_by_country, aes(x = Geography, y = Churn_Rate, fill = Geography)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = round(Churn_Rate, 2)), vjust = -0.3) +
+  labs(title = "Churn Rate by Country",
+       x = "Geography",
+       y = "Churn Rate (%)") +
+  theme_minimal() +
+theme(legend.title = element_blank(),
+        plot.title = element_text(hjust = 0.5)) 
+```
+
+```{r}
+df <- df %>% select(-id, -CustomerId, -Surname)
+```
+
+```{r}
+# Replace 'Male' with 1 and 'Female' with 0 in the 'Gender' column
+df <- df %>% 
+  mutate(Gender = ifelse(Gender == "Male", 1, 0))
+# Replace 'Male' with 1 and 'Female' with 0 in the 'Gender' column
+df <- df %>% 
+  mutate(Gender = ifelse(Gender == "Male", 1, 0))
+# One-hot encoding for categorical variables
+dv <- dummyVars("~ .", data = df, fullRank = FALSE)
+df_encoded <- predict(dv, newdata = df)
+# Convert to dataframe
+df_encoded <- as.data.frame(df_encoded)
+
+# Standard scaling for numerical features
+num_features <- c("Age", "CreditScore", "Tenure", "Balance", "EstimatedSalary")
+df_encoded[num_features] <- scale(df_encoded[num_features])
+
+```
+
+**Train and Test datasets**
+
+```{r}
+names(df_encoded)
+```
+
+**Split Data to train and test**
+
+```{r}
+# Set the seed for reproducibility
+set.seed(123)
+
+# Split the data
+train_index <- createDataPartition(df_encoded$Exited, p = 0.7, list = FALSE)
+train <- df_encoded[train_index, ]
+test_df <- df_encoded[-train_index, ]
+```
+
+```{r}
+# Create a table of the 'Exited' column
+exited_table <- table(train_df$Exited)
+
+# Convert the table to a dataframe for plotting
+exited_df <- as.data.frame(exited_table)
+
+# Create a bar plot
+ggplot(exited_df, aes(x = Var1, y = Freq)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(title = "Distribution of Exited Customers in train test",
+       x = "Exited",
+       y = "Frequency") +
+  theme_minimal() + theme(legend.title = element_blank(),
+        plot.title = element_text(hjust = 0.5)) 
+```
+
+```{r}
+# Create a table of the 'Exited' column
+exited_table <- table(test_df$Exited)
+
+# Convert the table to a dataframe for plotting
+exited_df <- as.data.frame(exited_table)
+
+# Create a bar plot
+ggplot(exited_df, aes(x = Var1, y = Freq)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(title = "Distribution of Exited Customers in test set",
+       x = "Exited",
+       y = "Frequency") +
+  theme_minimal() + theme(legend.title = element_blank(),
+        plot.title = element_text(hjust = 0.5)) 
+```
+
+```{r}
+# Apply Borderline SMOTE
+
+
+
+```
+
+```{r}
+
+```
 
 ## References
 
