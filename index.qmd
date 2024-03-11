@@ -35,9 +35,7 @@ separation in the data.
 
 ![](images/clipboard-4268047144.png)
 
-Fig: - [Linearly Separable
-Data](https://media.geeksforgeeks.org/wp-content/uploads/20200605170732/linearsep.png)
-Fig: - [Non-Linearly Separable
+Fig: - [Linear & Non-Linear Separable
 Data](https://media.geeksforgeeks.org/wp-content/uploads/20200605170732/linearsep.png)
 
 Hyperplanes are decision boundaries that help classify the data points.
@@ -50,12 +48,10 @@ imagine when the number of features exceeds 3.
 
 ![](images/clipboard-4038275398.png)
 
-Fig: - [Hyperplane in 2D feature
-space](https://www.researchgate.net/profile/Mohammed-Kabir/publication/353523194/figure/fig4/AS:1050564217556992@1627485436969/Hyperplanes-in-2D-and-3D-feature-space.png)
-Fig: - [Hyperplane in 3D feature
+Fig: - [Hyperplane in 2D & 3D feature
 space](https://www.researchgate.net/profile/Mohammed-Kabir/publication/353523194/figure/fig4/AS:1050564217556992@1627485436969/Hyperplanes-in-2D-and-3D-feature-space.png)
 
-## Literature Review
+### Literature Review
 
 Support Vector Machines (SVM) have emerged as a potent tool in the realm
 of supervised learning, offering a robust mathematical framework for
