@@ -141,7 +141,7 @@ holders at ABC Multinational Bank, with the ultimate goal of predicting
 customer churn. The dataset comprises the following columns:
 
 | Column Name        | Description                                                                        |
-|--------------------------|----------------------------------------------|
+|---------------------|---------------------------------------------------|
 | `customer_id`      | A unique identifier for each customer, not used in the analysis.                   |
 | `credit_score`     | A numerical representation of the customer's creditworthiness.                     |
 | `country`          | The country in which the customer resides.                                         |
@@ -305,6 +305,8 @@ library(ggplot2)
 library(corrplot)
 library(caret)
 library(smotefamily)
+library(ROSE)
+library(caret)
 ```
 
 **Load Data**
@@ -667,78 +669,164 @@ df <- df %>% select(-id, -CustomerId, -Surname)
 ```
 
 ```{r}
-# Replace 'Male' with 1 and 'Female' with 0 in the 'Gender' column
-df <- df %>% 
-  mutate(Gender = ifelse(Gender == "Male", 1, 0))
-# Replace 'Male' with 1 and 'Female' with 0 in the 'Gender' column
-df <- df %>% 
-  mutate(Gender = ifelse(Gender == "Male", 1, 0))
-# One-hot encoding for categorical variables
-dv <- dummyVars("~ .", data = df, fullRank = FALSE)
-df_encoded <- predict(dv, newdata = df)
-# Convert to dataframe
-df_encoded <- as.data.frame(df_encoded)
-
-# Standard scaling for numerical features
-num_features <- c("Age", "CreditScore", "Tenure", "Balance", "EstimatedSalary")
-df_encoded[num_features] <- scale(df_encoded[num_features])
-
-```
-
-**Train and Test datasets**
-
-```{r}
-names(df_encoded)
-```
-
-**Split Data to train and test**
-
-```{r}
-# Set the seed for reproducibility
-set.seed(123)
-
-# Split the data
-train_index <- createDataPartition(df_encoded$Exited, p = 0.7, list = FALSE)
-train_df <- df_encoded[train_index, ]
-test_df <- df_encoded[-train_index, ]
+names(df)
 ```
 
 ```{r}
-# Create a table of the 'Exited' column
-exited_table <- table(train_df$Exited)
+table(df$Gender)
+```
 
-# Convert the table to a dataframe for plotting
-exited_df <- as.data.frame(exited_table)
+### Python
 
-# Create a bar plot
-ggplot(exited_df, aes(x = Var1, y = Freq)) +
-  geom_bar(stat = "identity", fill = "steelblue") +
-  labs(title = "Distribution of Exited Customers in train test",
-       x = "Exited",
-       y = "Frequency") +
-  theme_minimal() + theme(legend.title = element_blank(),
-        plot.title = element_text(hjust = 0.5)) 
+```{python}
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from imblearn.over_sampling import SMOTE
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score, classification_report
+```
+
+```{python}
+df=pd.read_csv('dataset/train.csv')
+```
+
+```{python}
+df.head()
+```
+
+```{python}
+
+df.drop(['id','CustomerId','Surname'],axis=1,inplace=True)
+```
+
+```{python}
+df['Gender'] = df['Gender'].replace({'Male': 1, 'Female': 0})
+
+```
+
+```{python}
+df.head()
+```
+
+### One Hot Encoding
+
+```{python}
+df = pd.get_dummies(df, columns=['Geography'])
+```
+
+### Train-Test Split
+
+```{python}
+X = df.drop('Exited', axis=1)
+y = df['Exited']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+```
+
+### Handling Data Imbalance
+
+```{python}
+smote = SMOTE(random_state=42)
+X_train, y_train = smote.fit_resample(X_train, y_train)
+```
+
+### Scaling
+
+```{python}
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+```
+
+```{python}
+svm_model = SVC(kernel='linear')
+svm_model.fit(X_train, y_train)
+```
+
+```{python}
+y_pred = svm_model.predict(X_test)
+```
+
+```{python}
+accuracy = accuracy_score(y_test, y_pred)
+print(f'Accuracy: {accuracy}')
+
+class_report = classification_report(y_test, y_pred)
+print('Classification Report:\n', class_report)
 ```
 
 ```{r}
-# Create a table of the 'Exited' column
-exited_table <- table(test_df$Exited)
 
-# Convert the table to a dataframe for plotting
-exited_df <- as.data.frame(exited_table)
-
-# Create a bar plot
-ggplot(exited_df, aes(x = Var1, y = Freq)) +
-  geom_bar(stat = "identity", fill = "steelblue") +
-  labs(title = "Distribution of Exited Customers in test set",
-       x = "Exited",
-       y = "Frequency") +
-  theme_minimal() + theme(legend.title = element_blank(),
-        plot.title = element_text(hjust = 0.5)) 
 ```
 
 ```{r}
 
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+### 
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
 
 ```
 
