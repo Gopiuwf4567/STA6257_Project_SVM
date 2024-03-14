@@ -293,6 +293,21 @@ plots were utilized to identify potential relationships between
 features, revealing a positive correlation between 'Age' and 'Balance,'
 and a negative correlation between 'NumOfProducts' and 'Balance.'
 
+### Feature Engineering
+
+In our feature engineering process, we transformed the 'Gender' column
+from categorical to numerical by encoding 'Male' as 1 and 'Female' as 0.
+We also applied one-hot encoding to the 'Geography' column to convert it
+into binary variables for each country, ensuring that our model could
+interpret these categorical features correctly. Additionally, we split
+our data into training and testing sets to evaluate the performance of
+our models on unseen data. To address class imbalance in our target
+variable, we employed the Synthetic Minority Over-sampling Technique
+(SMOTE), which helped create a more balanced distribution of classes.
+Finally, we scaled our data using the StandardScaler to ensure that all
+features contributed equally to the model's performance, preventing any
+feature with larger values from dominating the model's learning process.
+
 ### Data Analysis
 
 **Loading Libraries**
@@ -685,6 +700,7 @@ from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import SMOTE
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, classification_report
+from sklearn.model_selection import GridSearchCV
 ```
 
 ```{python}
@@ -756,81 +772,59 @@ class_report = classification_report(y_test, y_pred)
 print('Classification Report:\n', class_report)
 ```
 
-```{r}
-
-```
-
-```{r}
-
-```
-
-```{r}
-
-```
-
-```{r}
-
-```
+The macro average f1 score is 73 which not that great performing hyper
+parameter tuning to increase the model performance.
 
 ### 
+Hpyer Paremeter Tuning using Grid search CV
 
-```{r}
+```{python}
+#param_grid = {
+ #   'C': [0.1, 1, 10, 100],  # Regularization parameter
+  #  'kernel': ['linear', 'rbf', 'poly'],  # Kernel type
+  #  'gamma': ['scale', 'auto'],  # Kernel coefficient for 'rbf', 'poly', and 'sigmoid'
+#}
+```
+
+```{python}
+#svm = SVC()
+#grid_search = GridSearchCV(svm, param_grid, cv=5, scoring='accuracy', n_jobs=-1)
 
 ```
 
-```{r}
+```{python}
+#grid_search.fit(X_train, y_train)
 
 ```
 
-```{r}
+```{python}
+#print('Best Parameters:', grid_search.best_params_)
+#print('Best Score:', grid_search.best_score_)
 
 ```
 
-```{r}
+```{python}
+svm_model = SVC(kernel='poly', C=0.1, degree=3, gamma='scale')
+svm_model.fit(X_train, y_train)
+```
+
+```{python}
+#best_model = grid_search.best_estimator_
+y_pred = svm_model.predict(X_test)
+
+accuracy = accuracy_score(y_test, y_pred)
+print(f'Accuracy: {accuracy}')
+
+class_report = classification_report(y_test, y_pred)
+print('Classification Report:\n', class_report)
 
 ```
 
-```{r}
+```{python}
 
 ```
 
-```{r}
-
-```
-
-```{r}
-
-```
-
-```{r}
-
-```
-
-```{r}
-
-```
-
-```{r}
-
-```
-
-```{r}
-
-```
-
-```{r}
-
-```
-
-```{r}
-
-```
-
-```{r}
-
-```
-
-```{r}
+```{python}
 
 ```
 
