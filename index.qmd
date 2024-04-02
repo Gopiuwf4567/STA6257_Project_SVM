@@ -51,7 +51,7 @@ imagine when the number of features exceeds 3.
 Fig: - [Hyperplane in 2D & 3D feature
 space](https://www.researchgate.net/profile/Mohammed-Kabir/publication/353523194/figure/fig4/AS:1050564217556992@1627485436969/Hyperplanes-in-2D-and-3D-feature-space.png)
 
-### Literature Review
+## Related Work
 
 Support Vector Machines (SVM) have emerged as a potent tool in the realm
 of supervised learning, offering a robust mathematical framework for
@@ -60,10 +60,11 @@ principles such as structural risk minimization and kernel functions
 [(Jakkula,
 2006)](https://course.ccs.neu.edu/cs5100f11/resources/jakkula.pdf), SVM
 has demonstrated exceptional generalization capabilities, adeptly
-handling non-linear decision boundaries through kernel tricks [(Jun,
-2021;](https://iopscience.iop.org/article/10.1088/1742-6596/1748/5/052006/meta)
+handling non-linear decision boundaries through kernel tricks
+[(](https://iopscience.iop.org/article/10.1088/1742-6596/1748/5/052006/meta)[Jun,
+2021](https://iopscience.iop.org/article/10.1088/1742-6596/1748/5/052006/pdf)[;](https://iopscience.iop.org/article/10.1088/1742-6596/1748/5/052006/meta)
 [Deris,
-2011)](https://www.sciencedirect.com/science/article/pii/S1877705811054993).
+2011)](https://pdf.sciencedirectassets.com/278653/1-s2.0-S1877705811X00206/1-s2.0-S1877705811054993/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDsaCXVzLWVhc3QtMSJHMEUCIQDRIJHxqhNzb10swgpln%2FkY6bjoyZKE3nD%2Fodkt5GI98AIgBTvjYZpQcJgUI1Pqq5f3ukWHMK%2F5XSW98TZuXXQAOcsqsgUIZBAFGgwwNTkwMDM1NDY4NjUiDLPbBsame%2FBmeEwqtSqPBWdTfwj6Vh0LoC5Szxy29pQP1a0DgnSttRO6n%2FSnpCwv4ogGiFM%2B4n0IeQgzc%2B%2BcXJgYdvtBm2Uyl6cACcI2SfdxRJy%2BehNfbVwOmQaFEOlPYHakm1%2FOJb8ZNMSuWZ9cqp2%2FE80YsnL30bU%2Fz8uFQpQ4YQlUgFpHdNV8JivmOQo2CfvVblKzQsEcDcecoOZhkGlLx1ES3veMI2hjHpbLYgsUU1wWV39N3fjGVvUMsLq9N7MwYumyhhMkCnTWWLBdl2Lu3EhvSyfkvJwNcac8ldPC2WenhwWcq3SnfqRQE3lNjDZSB3yrVQVDlSA5ec2g0qx7jGrwZu8vagM%2Ffoag0WRnRQWU%2BzFDJnDxhES21QUOcOyvMpsC3BLhJ60kWjxWJYhGv5l8frXArc6rI%2B%2BRxj7OKM7AEW4I3t%2Bju%2BzR7LWpwHNe7XdpQ32i3V6cZFU7ghm58Pw8Tj2aK8ahkn6Jra%2BWTIUZCJHyh9yKDNolxX%2FqfOtCC%2Bmz%2F%2Bf0tkI%2BLR2BuI1sazmeTUG5MkCb8poIMu6f81XRVBcHzdBKCFQbXnAEx5WQlLTiwo%2FtmNVL5JQbPfz7cFjyHr%2BpLWvZkraWM9Kd0D0MD1oIIUem5T9QnrFfpjBHhYRS6v%2F%2B%2FE5C6%2BdxE%2B4UJl0B3P%2FG2pJiyj4I2yQ%2FnFBaNE%2BmzhAS9K4Dr7lcANySJx0cwm%2Fxeo4pgXY9iuxOpPlSJvncOrmVL0hORsR4JztZud%2BJGtfnDMJpAkoLieh89XrfzR3HbM5Vsn4z6r0OJoqauVdmtshtt7V2f3oDsyrCUTnqQb2rwFHcEEYtDNLIEiTdh9j%2F12pGPD9KxJ6X1lIxEBmn305qUNzh87k3DNS3Oxvl2Md%2BC7FC2PMw8amxsAY6sQG1s1mPdL8wLhYf4hi2NdVDc6si0RhjSLc94rpZRLlOJIqLAiva40Jd6Pzsus2Itc5I25yb%2FRqHZ9MWyBoasFU0q0GWZkgLw5Xf3yknNCjO7DlJtUVCAeO1Iw0bP9xp0dvstHZ7nwdhWSBXSx%2B9rozQn%2BaobFRLa0lYQOJ%2Bs7tnUqf8XlhkpIGMX9hNUC86LSIiEx30a45wzXMyMiOC7%2B9cp3D1dRzq9wPZc3QBCiq7K3Q%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240402T195007Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTYVCPHGYRP%2F20240402%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=d428a97615b79c27a1060daf99291736e85ff1c9ce89cbffecb00cf8c4a00110&hash=a71efd70741dddce15851eeb002b23c90a18f2723f367cb1df13177c2952071f&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S1877705811054993&tid=spdf-ba9c0247-90b6-4b16-9817-1575489d723b&sid=cdec0a5829d248405139cb239ff75e85058egxrqa&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=1315585704525a565d5d&rr=86e358999b15244b&cc=us).
 Despite challenges like computational cost and scalability [(Bhavsar,
 2012)](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=d683a971524a0d76382ce335321b4b8189bc8299),
 the evolution of SVM has led to significant contributions in diverse
@@ -71,26 +72,27 @@ fields, including pattern recognition, computer vision [(Kecman,
 2005)](https://link.springer.com/chapter/10.1007/10984697_1), and even
 agriculture, where it aids in optimizing crop yield and disease
 identification [(Kumar et al.,
-2017)](https://doi.org/10.1016/j.procs.2017.11.450). The ongoing
-advancements in SVM research are geared towards refining algorithms and
-broadening their application spectrum, especially in the context of
-burgeoning data volumes [(Yue,
+2017)](https://pdf.sciencedirectassets.com/280203/1-s2.0-S1877050917X00215/1-s2.0-S1877050917326984/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDsaCXVzLWVhc3QtMSJHMEUCIQDrbzxUNjQ6xkuKOG3uSbmno3adY4Ajq6GGLvDskWQY8gIgL3Q%2Fb3xMXBtanZ4%2BVrSiA2dhG1S3kLsC97YTqR7XYl0qswUIZBAFGgwwNTkwMDM1NDY4NjUiDMKgGC1WeK5hj7UX6yqQBWj%2F7RYNo1o46RxiemZDXwc9nWsiwFmRpSzTOl8IHlrApNULw8DnanHeg1xvw3EB6kSckNuYksIJnEUs9bLfhQKEp9roNxbg%2FPiXo3OgXcqmhMfFuR1lNDcgPLw1RSitBgym72wwWPCqkH9ktw57r3TwV5%2BC%2BV6k1TeoGA4FU4gSqIlnDcKpe3uUy61sLylmpLJGgwMLt1ycp0Y1c66loqSdmnEDlKex7K%2BEyEYLr2U%2BiQmB5M%2F6hluTs5IOkmLYTZI%2F22J3Ctq%2Fpx18RCblT4%2B%2FR9dmmJNG3MuybIOgT2YOrqGKHvi4ODxOG11rVRQcjSg952Cud%2BNc2bBJo1zWqFXKfgBcLFQMeEltPLhXLa65%2BfUAabOx7W3pcKqrWzpuZzl1BIjbbihGUFhNsnqSMz%2B%2FbyOEMnNk6Vmsg7x5cVudz1%2Bj3VYsN6BeSeYOtwYKYwMkMZwASfrmsjYMcUwDO0291OBvJzCeckH4jtUV4YgLvNya9MLbJlpFX997yH%2FrE7EswVfmaTLb2VDQc6OdkvjHQHZ4hthqWYxaO1jQNG5l84vKwgsONMLlwAEuyuxKYJJnLzILg1dt%2BM6BUY42SD%2FdQGiCVTkOAEPloeT80EJu4wKTDi8GcZtjr%2F63ZWRFOYtN9A1NKUwHob2SrSneoM0R04%2BuUKyhzh2w%2FlJAO3T0onHNDoZvqYHND2udT38smpGqKAx4gorf7dBPT8WUVnsUhpNsensw4IhXKgyy2LeMQPpogx%2FZKVaRKvi%2FZNrXkGWEq8vch3TKkL2uJOrczRuMu6bIv3DQke6XKKyUdjkfVJ2V5GCieBj80TSJ6ijqUWn0JlkRj%2BwS9Ybnq53zY%2FmGCdsv633uHBkePfoUUxJvMIKasbAGOrEBBxOxxGNHJ9oRRL9H492fVHuzi8TlF50gY8xFRqujQf%2F6Mrh%2FNM5vtsBF6i56bP6UmGme9rpBBAfreXLBsU1QTqisXacErYZ26xAFp3Y5jAxYgaobjIP9WlWXQBQKrngf%2Bp7V4H8L6ugX%2F4ucgPb%2BOp8UaZdl17Q5wcKpQampwZmc7BSoKdnO9s787yngNjLYTa7Y6WGRJL%2BZ2pgDJdR%2FqFan%2BCdO8uIe%2BSHVNQ6q45X0&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240402T195145Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTYRMTTYZMG%2F20240402%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=13ee174eeb82a425e46de119799160f19e618179b2722928d09f536851377cc3&hash=a19640cc6168c6ce9d2535df2fe6efc7c052d37fcbbc4ed0382222820c77475d&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S1877050917326984&tid=spdf-0546f9e9-4383-4cad-a6f2-d1461c2d5949&sid=cdec0a5829d248405139cb239ff75e85058egxrqa&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=1315585704525a0f025d&rr=86e35af9d851244b&cc=us).
+The ongoing advancements in SVM research are geared towards refining
+algorithms and broadening their application spectrum, especially in the
+context of burgeoning data volumes [(Yue,
 2003)](https://link.springer.com/article/10.1007/s11766-003-0059-5).
 
 In the financial and healthcare sectors, SVM has proven its efficacy in
 various applications. It has been utilized to construct reliable stock
 market prediction models by analyzing financial indices like Earnings
 Per Share (EPS) and Net Profit Growth Rate (NPGR) [(Han,
-2007)](https://scholarworks.lib.csusb.edu/ciima/vol7/iss4/8/). In
-healthcare, SVM has been instrumental in developing advanced diagnostic
-tools, such as the optimized SVM model for early dementia prediction
-[(Javeed et al., 2023)](https://www.mdpi.com/2227-9059/11/2/439) and the
-multi-disease prediction model using an improved SVM-radial bias kernel
-approach [(Harimoorthy & Thangavelu,
-2021)](https://doi.org/10.1007/s12652-019-01652-0). These innovations
-underscore the potential of machine learning in revolutionizing
-healthcare by facilitating early diagnosis and personalized treatment
-plans.
+2007)](https://scholarworks.lib.csusb.edu/cgi/viewcontent.cgi?article=1059&context=ciima).
+In healthcare, SVM has been instrumental in developing advanced
+diagnostic tools, such as the optimized SVM model for early dementia
+prediction [(Javeed et al.,
+2023)](https://www.mdpi.com/2227-9059/11/2/439) and the multi-disease
+prediction model using an improved SVM-radial bias kernel approach
+[(Harimoorthy & Thangavelu,
+2021)](https://www.researchgate.net/publication/338353198_Multi-disease_prediction_model_using_improved_SVM-radial_bias_technique_in_healthcare_monitoring_system#fullTextFileContent).
+These innovations underscore the potential of machine learning in
+revolutionizing healthcare by facilitating early diagnosis and
+personalized treatment plans.
 
 SVM's application extends to domains like online retail and network
 security, where it addresses complex challenges with remarkable
@@ -122,43 +124,12 @@ for small and medium enterprises in supply chain finance [(Zhang, Hu, &
 Zhang, 2015)](https://doi.org/10.1186/s40854-015-0014-5), and in
 cloud-based services, where it ensures data confidentiality and decision
 verifiability in health monitoring systems [(Liang et al.,
-2021)](https://ieeexplore.ieee.org/abstract/document/9415746). These
-advancements highlight the transformative potential of machine learning
-techniques in enhancing diagnostic accuracy, optimizing financial
-assessments, and ensuring secure cloud-based services.
+2021)](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9415746).
+These advancements highlight the transformative potential of machine
+learning techniques in enhancing diagnostic accuracy, optimizing
+financial assessments, and ensuring secure cloud-based services.
 
-## Dataset
-
-Customer retention is a critical aspect for banks to ensure the
-sustainability of their operations. ABC Multinational Bank, in
-particular, places a strong emphasis on retaining its account holders.
-The primary objective of this analysis is to examine the customer data
-of the bank's account holders to predict and prevent customer churn
-effectively.
-
-The dataset under consideration contains information about account
-holders at ABC Multinational Bank, with the ultimate goal of predicting
-customer churn. The dataset comprises the following columns:
-
-| Column Name        | Description                                                                        |
-|---------------------|---------------------------------------------------|
-| `customer_id`      | A unique identifier for each customer, not used in the analysis.                   |
-| `credit_score`     | A numerical representation of the customer's creditworthiness.                     |
-| `country`          | The country in which the customer resides.                                         |
-| `gender`           | The gender of the customer (e.g., male, female).                                   |
-| `age`              | The age of the customer in years.                                                  |
-| `tenure`           | The number of years the customer has been with the bank.                           |
-| `balance`          | The current balance in the customer's account.                                     |
-| `products_number`  | The number of products the customer has with the bank.                             |
-| `credit_card`      | Indicates whether the customer has a credit card with the bank.                    |
-| `active_member`    | Indicates whether the customer is an active member.                                |
-| `estimated_salary` | The estimated annual salary of the customer.                                       |
-| `churn`            | The target variable, indicating customer churn (1 for churned, 0 for not churned). |
-
-Source: - [Bank Churn
-Dataset](https://www.kaggle.com/datasets/rangalamahesh/bank-churn/data)
-
-### Methodology
+## Methods
 
 **Mathematical Intuition of Support Vector Machine**
 
@@ -168,19 +139,25 @@ matching class labels (Y) comprise our training dataset.
 
 Equation for hyperplane can be written as:
 
-$w^Tx+b=0$
+$$
+w^Tx+b=0
+$$ {#eq-hyperplane}
 
 The vector W represents the normal vector to the hyperplane. i.e the
 direction perpendicular to the hyperplane. The parameter **b** in the
 equation represents the offset or distance of the hyperplane from the
 origin along the normal vector **w**.
 
-$d_i = \frac{w^Tx_i + b}{\|w\|}$
+$$
+d_i = \frac{w^Tx_i + b}{\|w\|}
+$$ {#eq- distance of hyperplane}
 
 where \|\|w\|\| represents the Euclidean norm of the weight vector w.
 Euclidean norm of the normal vector W
 
-$\hat{y} =\begin{cases} 0 & \text{if } w^T x + b \geq 0 \\ 1 & \text{if } w^T x + b < 0 \end{cases}$
+$$
+\hat{y} =\begin{cases} 0 & \text{if } w^T x + b \geq 0 \\ 1 & \text{if } w^T x + b < 0 \end{cases}
+$$ {#eq-Euclidean norm}
 
 **kernel function in SVM**
 
@@ -211,7 +188,7 @@ for optimal performance. The choice of kernel function and its
 parameters can significantly impact the SVM model's ability to capture
 the underlying patterns in the data.
 
-### **Margin and Support Vectors**
+#### **Margin and Support Vectors**
 
 The margin in SVM is defined as the distance between the separating
 hyperplane and the nearest data points from each class, known as the
@@ -227,17 +204,21 @@ alter the hyperplane. The SVM model is said to be "sparse" because only
 the support vectors contribute to defining the hyperplane, while other
 data points have no influence.
 
-### **Objective Function and Optimization**
+#### **Objective Function and Optimization**
 
 The objective function that SVM optimizes is a combination of maximizing
 the margin and minimizing the classification error. This is achieved
 through the minimization of the following objective function:
 
-​$min_{w, b} \frac{1}{2} \|w\|^2 + C \sum_{i=1}^{n} \xi_i$
+$$
+min_{w, b} \frac{1}{2} \|w\|^2 + C \sum_{i=1}^{n} \xi_i
+$$
 
 Subject to the constraints:
 
-$y_i (w^T x_i + b) \geq 1 - \xi_i \quad \text{and} \quad \xi_i \geq 0 \quad \text{for all } i$
+$$
+y_i (w^T x_i + b) \geq 1 - \xi_i \quad \text{and} \quad \xi_i \geq 0 \quad \text{for all } i
+$$
 
 where $w$ is the weight vector, $b$ is the bias term, $C$ is the
 regularization parameter, $\xi_i$ are the slack variables representing
@@ -257,20 +238,40 @@ The optimization of the objective function involves finding the values
 of $w$ and $b$ that minimize the function, subject to the constraints.
 This is typically done using quadratic programming techniques.
 
-### **Data Preprocessing**
+## Dataset
 
-In the initial stage of our analysis, we undertook several preprocessing
-steps to ensure the data was suitable for modeling. Since our dataset
-did not contain any null values, we focused on encoding categorical
-variables and scaling numerical features. The categorical variables,
-such as 'Country' and 'Gender,' were encoded using one-hot encoding to
-convert them into a format that could be easily used by our machine
-learning algorithms. For numerical features like 'Credit Score,' 'Age,'
-'Tenure,' 'Balance,' and 'Estimated Salary,' we applied standard scaling
-to normalize their distribution, ensuring that no single feature would
-dominate the model due to its scale.
+Customer retention is a critical aspect for banks to ensure the
+sustainability of their operations. ABC Multinational Bank, in
+particular, places a strong emphasis on retaining its account holders.
+The primary objective of this analysis is to examine the customer data
+of the bank's account holders to predict and prevent customer churn
+effectively.
 
-### **Exploratory Data Analysis (EDA)**
+The dataset under consideration contains information about account
+holders at ABC Multinational Bank, with the ultimate goal of predicting
+customer churn. The dataset comprises the following columns:
+
+| Column Name        | Description                                                                        |
+|-----------------|-------------------------------------------------------|
+| `customer_id`      | A unique identifier for each customer, not used in the analysis.                   |
+| `credit_score`     | A numerical representation of the customer's creditworthiness.                     |
+| `country`          | The country in which the customer resides.                                         |
+| `gender`           | The gender of the customer (e.g., male, female).                                   |
+| `age`              | The age of the customer in years.                                                  |
+| `tenure`           | The number of years the customer has been with the bank.                           |
+| `balance`          | The current balance in the customer's account.                                     |
+| `products_number`  | The number of products the customer has with the bank.                             |
+| `credit_card`      | Indicates whether the customer has a credit card with the bank.                    |
+| `active_member`    | Indicates whether the customer is an active member.                                |
+| `estimated_salary` | The estimated annual salary of the customer.                                       |
+| `churn`            | The target variable, indicating customer churn (1 for churned, 0 for not churned). |
+
+Source: - [Bank Churn
+Dataset](https://www.kaggle.com/datasets/rangalamahesh/bank-churn/data)
+
+## **Analysis and Results**
+
+**Exploratory Data Analysis (EDA)**
 
 Our Exploratory Data Analysis (EDA) aimed to uncover patterns, detect
 anomalies, and test hypotheses about our data. We started with summary
@@ -293,7 +294,7 @@ plots were utilized to identify potential relationships between
 features, revealing a positive correlation between 'Age' and 'Balance,'
 and a negative correlation between 'NumOfProducts' and 'Balance.'
 
-### Feature Engineering
+**Feature Engineering**
 
 In our feature engineering process, we transformed the 'Gender' column
 from categorical to numerical by encoding 'Male' as 1 and 'Female' as 0.
@@ -308,8 +309,6 @@ Finally, we scaled our data using the StandardScaler to ensure that all
 features contributed equally to the model's performance, preventing any
 feature with larger values from dominating the model's learning process.
 
-### Data Analysis
-
 **Loading Libraries**
 
 ```{r}
@@ -322,6 +321,13 @@ library(caret)
 library(smotefamily)
 library(ROSE)
 library(caret)
+library(DMwR)
+library(e1071)
+library(pROC)
+library(doParallel)
+library(foreach)
+library(randomForest)  # For Random Forest
+library(xgboost)
 ```
 
 **Load Data**
@@ -331,7 +337,7 @@ df <- read.csv("dataset/train.csv")
 ```
 
 ```{r}
-head(df)
+dim(df)
 ```
 
 **Summary Statistics**
@@ -639,7 +645,7 @@ Estimated Salary in predicting customer churn, with both customers who
 exited and those who did not evenly dispersed across all ranges of
 Salary and Credit Scores.
 
-**Correlation Plot**
+#### **Correlation Plot**
 
 ```{r}
 corr_matrix <- cor(select(df, CreditScore, Age, Tenure, Balance, NumOfProducts, EstimatedSalary))
@@ -651,7 +657,7 @@ corrplot(corr_matrix, method = "circle")
 There seems to be a noticeable positive correlation between Age and
 Balance, and a negative correlation between NumOfProducts and Balance.
 
-**Churn Rate by Geography**
+#### **Churn Rate by Geography**
 
 ```{r}
 churn_by_country <- df %>%
@@ -661,10 +667,6 @@ churn_by_country <- df %>%
     Churned_Customers = sum(Exited),
     Churn_Rate = (sum(Exited) / n()) * 100
   )
-```
-
-```{r}
-print(churn_by_country)
 ```
 
 ```{r}
@@ -680,152 +682,195 @@ theme(legend.title = element_blank(),
 ```
 
 ```{r}
-df <- df %>% select(-id, -CustomerId, -Surname)
+sample_size <- 20000
+sample <- createDataPartition(df$Exited, p = sample_size / nrow(df), list = FALSE)
+df <- df[sample, ]
 ```
 
 ```{r}
-names(df)
+df <- df[, !(names(df) %in% c('id', 'CustomerId', 'Surname'))]
+df$Gender <- ifelse(df$Gender == 'Male', 1, 0)
 ```
 
 ```{r}
-table(df$Gender)
+df <- cbind(df, model.matrix(~ Geography - 1, data = df))
+df <- df[, !names(df) %in% "Geography"]
 ```
 
-### Python
+#### Split data in to train and test
 
-```{python}
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from imblearn.over_sampling import SMOTE
-from sklearn.svm import SVC
-from sklearn.metrics import accuracy_score, classification_report
-from sklearn.model_selection import GridSearchCV
+```{r}
+set.seed(123)  # For reproducibility
+splitIndex <- createDataPartition(df$Exited, p = 0.8, list = FALSE)
+
+train <- df[splitIndex, ]
+test <- df[-splitIndex, ]
+test_data <- test[, -which(names(test) == "Exited")]
 ```
 
-```{python}
-df=pd.read_csv('dataset/train.csv')
+```{r}
+names(train)
 ```
 
-```{python}
-df.head()
+```{r}
+dim(train)
 ```
 
-```{python}
-
-df.drop(['id','CustomerId','Surname'],axis=1,inplace=True)
+```{r}
+table(train$Exited)
 ```
 
-```{python}
-df['Gender'] = df['Gender'].replace({'Male': 1, 'Female': 0})
+#### Handle Class Imbalance
 
+```{r}
+train_balanced <- ovun.sample(Exited ~ ., data = train, method = "both", N = 16000, p = 0.5)$data
 ```
 
-```{python}
-df.head()
+```{r}
+table(train_balanced$Exited)
 ```
 
-### One Hot Encoding
+#### Scaling Data
 
-```{python}
-df = pd.get_dummies(df, columns=['Geography'])
+```{r}
+# Select numerical columns for normalization
+numerical_cols <- c("CreditScore", "Age", "Tenure", "Balance", "NumOfProducts", "EstimatedSalary")
+
+# Compute the mean and standard deviation from the training set
+means <- apply(train_balanced[numerical_cols], 2, mean, na.rm = TRUE)
+sds <- apply(train_balanced[numerical_cols], 2, sd, na.rm = TRUE)
+
+# Normalize the training set
+train_balanced[numerical_cols] <- sweep(train_balanced[numerical_cols], 2, means, "-")
+train_balanced[numerical_cols] <- sweep(train_balanced[numerical_cols], 2, sds, "/")
+
+# Normalize the test set using the same parameters
+test[numerical_cols] <- sweep(test[numerical_cols], 2, means, "-")
+test[numerical_cols] <- sweep(test[numerical_cols], 2, sds, "/")
 ```
 
-### Train-Test Split
+## Statistical Modelling
 
-```{python}
-X = df.drop('Exited', axis=1)
-y = df['Exited']
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+In this modeling phase, three different machine learning models are
+trained for a classification task using the `caret` package in R. The
+models include a Support Vector Machine (SVM) with a radial basis
+function kernel, a Random Forest model, and an XGBoost model.
 
-```
+The target variable `Exited` is converted to a factor to ensure that it
+is treated as a categorical variable for classification. A consistent
+seed (`set.seed(123)`) is set before training each model to ensure
+reproducibility of the results.
 
-### Handling Data Imbalance
+The `trainControl` function is used to set up the training control
+parameters, specifying 10-fold cross-validation (`method = "cv"`) to
+assess the performance of the models.
 
-```{python}
-smote = SMOTE(random_state=42)
-X_train, y_train = smote.fit_resample(X_train, y_train)
-```
+For the SVM model, data preprocessing steps
+(`preProcess = c("center", "scale")`) are included to center and scale
+the features, which is often necessary for SVM models to perform well.
 
-### Scaling
+Each model is trained on the `train_balanced` dataset using the `train`
+function from the `caret` package, with the model type specified by the
+`method` parameter (`"svmRadial"` for SVM, `"rf"` for Random Forest, and
+`"xgbTree"` for XGBoost).
 
-```{python}
-scaler = StandardScaler()
-X_train = scaler.fit_transform(X_train)
-X_test = scaler.transform(X_test)
-```
+The trained models are stored in a list named `models` for easy access
+and further evaluation. This modular approach allows for straightforward
+comparison of the performance of different models on the same dataset.
 
-```{python}
-svm_model = SVC(kernel='linear')
-svm_model.fit(X_train, y_train)
-```
+```{r}
+train_control <- trainControl(method = "cv", number = 5)
 
-```{python}
-y_pred = svm_model.predict(X_test)
-```
+# Set up a list to store models
+models <- list()
 
-```{python}
-accuracy = accuracy_score(y_test, y_pred)
-print(f'Accuracy: {accuracy}')
+# Train an SVM model
+train_balanced$Exited <- as.factor(train_balanced$Exited)
+set.seed(123)
+models$svm <- train(Exited ~ ., 
+                    data = train_balanced, 
+                    method = "svmRadial",  # Radial basis function kernel
+                    trControl = train_control,
+                    preProcess = c("center", "scale"))
 
-class_report = classification_report(y_test, y_pred)
-print('Classification Report:\n', class_report)
-```
+# Train a Random Forest model
+set.seed(123)
+models$random_forest <- train(Exited ~ ., 
+                               data = train_balanced, 
+                               method = "rf",  # Random Forest
+                               trControl = train_control)
 
-The macro average f1 score is 73 which not that great performing hyper
-parameter tuning to increase the model performance.
-
-### 
-Hpyer Paremeter Tuning using Grid search CV
-
-```{python}
-#param_grid = {
- #   'C': [0.1, 1, 10, 100],  # Regularization parameter
-  #  'kernel': ['linear', 'rbf', 'poly'],  # Kernel type
-  #  'gamma': ['scale', 'auto'],  # Kernel coefficient for 'rbf', 'poly', and 'sigmoid'
-#}
-```
-
-```{python}
-#svm = SVC()
-#grid_search = GridSearchCV(svm, param_grid, cv=5, scoring='accuracy', n_jobs=-1)
-
-```
-
-```{python}
-#grid_search.fit(X_train, y_train)
-
-```
-
-```{python}
-#print('Best Parameters:', grid_search.best_params_)
-#print('Best Score:', grid_search.best_score_)
-
-```
-
-```{python}
-svm_model = SVC(kernel='poly', C=0.1, degree=3, gamma='scale')
-svm_model.fit(X_train, y_train)
-```
-
-```{python}
-#best_model = grid_search.best_estimator_
-y_pred = svm_model.predict(X_test)
-
-accuracy = accuracy_score(y_test, y_pred)
-print(f'Accuracy: {accuracy}')
-
-class_report = classification_report(y_test, y_pred)
-print('Classification Report:\n', class_report)
+# Train an XGBoost model
+set.seed(123)
+models$xgboost <- suppressWarnings(train(Exited ~ ., 
+                        data = train_balanced, 
+                        method = "xgbTree",  # XGBoost
+                        trControl = train_control))
 
 ```
 
-```{python}
+```{r}
 
+for (model_name in names(models)) {
+    set.seed(123)
+  
+    cat("****** Model:", model_name, " ******\n")
+    # Make predictions
+    test_data <- test[, -which(names(test) == "Exited")]
+    predictions <- predict(models[[model_name]], test_data)
+    predictions_factor <- factor(predictions, levels = c("0", "1"))
+    exited_factor <- factor(test$Exited, levels = c("0", "1"))
+    probabilities <- predict(models[[model_name]], test_data, type = "prob")[,2]
+    confusion_matrix <- confusionMatrix(predictions_factor, exited_factor)
+    accuracy <- confusion_matrix$overall['Accuracy']
+    f1_score <- confusion_matrix$byClass['F1']
+    
+    # Calculate AUC-ROC
+    roc_curve <- roc(response = test$Exited, predictor = as.numeric(predictions))
+    auc_roc <- auc(roc_curve)
+    
+    # Print metrics
+    print(confusion_matrix)
+    cat("AUC-ROC:", auc_roc, "\n")
+    
+    # Plot AUC-ROC curve
+    plot(roc_curve, main = paste("AUC-ROC Curve for", model_name))
+    
+    cat("\n")
+}
 ```
 
-```{python}
+## Conclusion
 
+In this analysis of bank customer churn prediction, the Support Vector
+Machine (SVM) model has shown promising results, particularly in terms
+of specificity (81.09%) and positive predictive value (94.02%). These
+metrics are crucial in the banking context, as they indicate the model's
+accuracy in correctly identifying loyal customers (specificity) and its
+reliability in flagging potential churners (positive predictive value).
+Additionally, the SVM model's highest AUC-ROC score of 0.801 underscores
+its effectiveness in distinguishing between customers who are likely to
+churn and those who are not across various decision thresholds.
+
+Although the Random Forest model exhibited the highest overall accuracy
+(83.38%) and kappa score (0.5375), its lower specificity and negative
+predictive value compared to the SVM model suggest it may produce more
+false positives, leading to misallocated retention efforts. The XGBoost
+model showed balanced performance with a slight edge in sensitivity
+(81.96%) but did not surpass the SVM model in AUC-ROC.
+
+| Metric                    | SVM    | Random Forest | XGBoost |
+|---------------------------|--------|---------------|---------|
+| Accuracy                  | 79.52% | 83.38%        | 80.78%  |
+| Kappa                     | 0.494  | 0.5375        | 0.5017  |
+| Sensitivity               | 79.11% | 86.48%        | 81.96%  |
+| Specificity               | 81.09% | 71.70%        | 76.34%  |
+| Positive Predictive Value | 94.02% | 91.99%        | 92.86%  |
+| Negative Predictive Value | 50.82% | 58.54%        | 52.97%  |
+| Balanced Accuracy         | 80.10% | 79.09%        | 79.15%  |
+| AUC-ROC                   | 0.801  | 0.791         | 0.791   |
+
+```         
 ```
 
 ## References
