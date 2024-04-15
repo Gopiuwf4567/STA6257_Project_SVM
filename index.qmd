@@ -238,7 +238,9 @@ The optimization of the objective function involves finding the values
 of $w$ and $b$ that minimize the function, subject to the constraints.
 This is typically done using quadratic programming techniques.
 
-## Dataset
+## **Analysis and Results**
+
+#### Dataset
 
 Customer retention is a critical aspect for banks to ensure the
 sustainability of their operations. ABC Multinational Bank, in
@@ -252,7 +254,7 @@ holders at ABC Multinational Bank, with the ultimate goal of predicting
 customer churn. The dataset comprises the following columns:
 
 | Column Name        | Description                                                                        |
-|-----------------|-------------------------------------------------------|
+|-------------------|-----------------------------------------------------|
 | `customer_id`      | A unique identifier for each customer, not used in the analysis.                   |
 | `credit_score`     | A numerical representation of the customer's creditworthiness.                     |
 | `country`          | The country in which the customer resides.                                         |
@@ -268,46 +270,6 @@ customer churn. The dataset comprises the following columns:
 
 Source: - [Bank Churn
 Dataset](https://www.kaggle.com/datasets/rangalamahesh/bank-churn/data)
-
-## **Analysis and Results**
-
-**Exploratory Data Analysis (EDA)**
-
-Our Exploratory Data Analysis (EDA) aimed to uncover patterns, detect
-anomalies, and test hypotheses about our data. We started with summary
-statistics to understand the central tendency, dispersion, and shape of
-the dataset's distributions. For instance, we observed that the Credit
-Score ranged from 350 to 850, with a median of 659, and the Age of
-customers varied from 18 to 92 years, with a median age of 37 years.
-
-We then proceeded to visualize the distribution of key variables using
-distribution plots. This helped us identify the skewness in the 'Age'
-distribution and the uniform distribution of 'Estimated Salary.' Pair
-plots were employed to explore the relationships between variables like
-'Age' vs. 'Estimated Salary' and 'Age' vs. 'Credit Score,' providing
-insights into how different factors might influence customer churn.
-
-Through our EDA, we also investigated the distribution of the target
-variable 'churn' across different geographical regions and examined how
-the number of products varied across different regions. Correlation
-plots were utilized to identify potential relationships between
-features, revealing a positive correlation between 'Age' and 'Balance,'
-and a negative correlation between 'NumOfProducts' and 'Balance.'
-
-**Feature Engineering**
-
-In our feature engineering process, we transformed the 'Gender' column
-from categorical to numerical by encoding 'Male' as 1 and 'Female' as 0.
-We also applied one-hot encoding to the 'Geography' column to convert it
-into binary variables for each country, ensuring that our model could
-interpret these categorical features correctly. Additionally, we split
-our data into training and testing sets to evaluate the performance of
-our models on unseen data. To address class imbalance in our target
-variable, we employed the Synthetic Minority Over-sampling Technique
-(SMOTE), which helped create a more balanced distribution of classes.
-Finally, we scaled our data using the StandardScaler to ensure that all
-features contributed equally to the model's performance, preventing any
-feature with larger values from dominating the model's learning process.
 
 **Loading Libraries**
 
@@ -754,7 +716,7 @@ test[numerical_cols] <- sweep(test[numerical_cols], 2, sds, "/")
 In this modeling phase, three different machine learning models are
 trained for a classification task using the `caret` package in R. The
 models include a Support Vector Machine (SVM) with a radial basis
-function kernel, a Random Forest model, and an XGBoost model.
+function kernel, a Random Forest model.
 
 The target variable `Exited` is converted to a factor to ensure that it
 is treated as a categorical variable for classification. A consistent
@@ -762,7 +724,7 @@ seed (`set.seed(123)`) is set before training each model to ensure
 reproducibility of the results.
 
 The `trainControl` function is used to set up the training control
-parameters, specifying 10-fold cross-validation (`method = "cv"`) to
+parameters, specifying 5-fold cross-validation (`method = "cv"`) to
 assess the performance of the models.
 
 For the SVM model, data preprocessing steps
@@ -801,11 +763,11 @@ models$random_forest <- train(Exited ~ .,
                                trControl = train_control)
 
 # Train an XGBoost model
-set.seed(123)
-models$xgboost <- suppressWarnings(train(Exited ~ ., 
-                        data = train_balanced, 
-                        method = "xgbTree",  # XGBoost
-                        trControl = train_control))
+#set.seed(123)
+#models$xgboost <- suppressWarnings(train(Exited ~ ., 
+                        #data = train_balanced, 
+                        #method = "xgbTree",  # XGBoost
+                        #trControl = train_control))
 
 ```
 
@@ -834,13 +796,24 @@ for (model_name in names(models)) {
     cat("AUC-ROC:", auc_roc, "\n")
     
     # Plot AUC-ROC curve
-    plot(roc_curve, main = paste("AUC-ROC Curve for", model_name))
+    #plot(roc_curve, main = paste("AUC-ROC Curve for", model_name))
     
     cat("\n")
 }
 ```
 
 ## Conclusion
+
+| Metric                    | SVM    | Random Forest |
+|---------------------------|--------|---------------|
+| Accuracy                  | 79.52% | 83.38%        |
+| Kappa                     | 0.494  | 0.5375        |
+| Sensitivity               | 79.11% | 86.48%        |
+| Specificity               | 81.09% | 71.70%        |
+| Positive Predictive Value | 94.02% | 91.99%        |
+| Negative Predictive Value | 50.82% | 58.54%        |
+| Balanced Accuracy         | 80.10% | 79.09%        |
+| AUC-ROC                   | 0.801  | 0.791         |
 
 In this analysis of bank customer churn prediction, the Support Vector
 Machine (SVM) model has shown promising results, particularly in terms
@@ -855,20 +828,7 @@ churn and those who are not across various decision thresholds.
 Although the Random Forest model exhibited the highest overall accuracy
 (83.38%) and kappa score (0.5375), its lower specificity and negative
 predictive value compared to the SVM model suggest it may produce more
-false positives, leading to misallocated retention efforts. The XGBoost
-model showed balanced performance with a slight edge in sensitivity
-(81.96%) but did not surpass the SVM model in AUC-ROC.
-
-| Metric                    | SVM    | Random Forest | XGBoost |
-|---------------------------|--------|---------------|---------|
-| Accuracy                  | 79.52% | 83.38%        | 80.78%  |
-| Kappa                     | 0.494  | 0.5375        | 0.5017  |
-| Sensitivity               | 79.11% | 86.48%        | 81.96%  |
-| Specificity               | 81.09% | 71.70%        | 76.34%  |
-| Positive Predictive Value | 94.02% | 91.99%        | 92.86%  |
-| Negative Predictive Value | 50.82% | 58.54%        | 52.97%  |
-| Balanced Accuracy         | 80.10% | 79.09%        | 79.15%  |
-| AUC-ROC                   | 0.801  | 0.791         | 0.791   |
+false positives, leading to misallocated retention efforts.
 
 ```         
 ```
