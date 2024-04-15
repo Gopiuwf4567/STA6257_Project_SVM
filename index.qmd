@@ -1,5 +1,5 @@
 ---
-title: "Customer Churn Analysis Using Support Vector Machine"
+title: " Bank Customer Churn Analysis Using Support Vector Machine"
 author: "Gopi Shankar Reddy Mallu,
          Kavya Reddy Maale,
          Satya Nageswara Dinesh Donkada,
