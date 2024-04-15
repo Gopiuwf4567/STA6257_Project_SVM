@@ -1,5 +1,5 @@
 ---
-title: "Support Vector Machine - Capstone Project"
+title: "Customer Churn Analysis Using Support Vector Machine"
 author: "Gopi Shankar Reddy Mallu,
          Kavya Reddy Maale,
          Satya Nageswara Dinesh Donkada,
