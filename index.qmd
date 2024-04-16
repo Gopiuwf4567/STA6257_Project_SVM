@@ -20,6 +20,8 @@ editor:
     wrap: 72
 ---
 
+[Slides](https://gopiuwf4567.github.io/STA6257_Project_SVM/Customer_Churn_Analysis_SVM_Presentation.html#/title-slide)
+
 ## Introduction
 
 Support Vector Machines (SVMs) are a type of supervised learning
@@ -254,7 +256,7 @@ holders at ABC Multinational Bank, with the ultimate goal of predicting
 customer churn. The dataset comprises the following columns:
 
 | Column Name        | Description                                                                        |
-|-------------------|-----------------------------------------------------|
+|-----------------------|------------------------------------------------|
 | `customer_id`      | A unique identifier for each customer, not used in the analysis.                   |
 | `credit_score`     | A numerical representation of the customer's creditworthiness.                     |
 | `country`          | The country in which the customer resides.                                         |
@@ -659,7 +661,7 @@ df <- cbind(df, model.matrix(~ Geography - 1, data = df))
 df <- df[, !names(df) %in% "Geography"]
 ```
 
-#### Split data in to train and test
+#### Split data into train and test
 
 ```{r}
 set.seed(123)  # For reproducibility
@@ -829,9 +831,6 @@ Although the Random Forest model exhibited the highest overall accuracy
 (83.38%) and kappa score (0.5375), its lower specificity and negative
 predictive value compared to the SVM model suggest it may produce more
 false positives, leading to misallocated retention efforts.
-
-```         
-```
 
 ## References
 
