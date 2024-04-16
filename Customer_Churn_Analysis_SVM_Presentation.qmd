@@ -1,0 +1,430 @@
+---
+title: "Bank Customer Churn Analysis Using Support Vector Machine"
+authors:
+  - name: Gopi Shankar Mallu
+  - name: Vamsi Kalla
+  - name: Dinesh Donkada
+  - name: Kavya Maale
+date: 'today'
+format:
+  revealjs:
+    code-block-height: 300px
+    incremental: true
+    slide-number: true
+    show-slide-number: print
+    smaller: true
+    scrollable: true
+    theme: dark
+course: STA 6257 - Advanced Statistical Modeling
+self-contained: true
+execute: 
+  warning: false
+  message: false
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## Introduction
+
+Support Vector Machines (SVMs) are powerful supervised learning models
+used for both classification and regression tasks. By constructing a
+hyperplane in a high-dimensional space, SVMs achieve class separation by
+maximizing the margin between the closest data points of each class.
+This approach not only enhances the model's accuracy but also its
+predictive reliability across datasets with numerous features or clear
+separations between classes.
+
+## Hyperplanes
+
+![](clipboard-4268047144.png){fig-align="center"}- Hyperplanes are
+decision boundaries that help classify the data points. Data points
+falling on either side of the hyperplane can be attributed to different
+classes. Also, the dimension of the hyperplane depends upon the number
+of features.
+
+\- **Image A** shows a clear linear separation, demonstrating the SVM
+hyperplane in a scenario where data is linearly separable.**Image B**
+illustrates data that is not linearly separable in its original space
+but can be tackled by SVM through the use of a kernel function.
+
+## Methodology
+
+-   Support Vector Machines (SVMs) serve as a robust methodology for
+    binary classification by creating a hyperplane which acts as a
+    decision boundary between two classes. This hyperplane is determined
+    mathematically by the equation $w^T.x +b=0$, where $w$ is the weight
+    vector perpendicular to the hyperplane, and $b$ is the bias,
+    shifting the hyperplane away from the origin.
+
+-   <div>
+
+    ### **kernel function in SVM**
+
+    </div>
+
+-   In Support Vector Machines (SVM), the kernel function plays a
+    crucial role in transforming the input feature space into a
+    higher-dimensional space where the data can be linearly separated.
+    This is particularly useful in cases where the data is not linearly
+    separable in its original space. The kernel function computes the
+    dot product between the feature vectors in this higher-dimensional
+    space without explicitly mapping the vectors into that space, which
+    is known as the "kernel trick."
+
+-   **Common types of kernel functions include:**
+
+-   **Linear Kernel**: $K(w,b)=w^Tx+b$. This is the simplest form of the
+    kernel, used when the data is linearly separable.
+
+-   **Polynomial Kernel**: $K(w, b) = (1 + w^T.x b)^d$. This kernel maps
+    the input features into a polynomial feature space, allowing for
+    polynomial decision boundaries.
+
+-   **Radial Basis Function (RBF) Kernel**:
+    $K(w, b) = \exp(-\gamma |w.x - b|^2)$. Also known as the Gaussian
+    kernel, it maps the features into an infinite-dimensional space,
+    providing a lot of flexibility for non-linear decision boundaries.
+
+-   Each kernel function has its own set of parameters that need to be
+    tuned for optimal performance. The choice of kernel function and its
+    parameters can significantly impact the SVM model's ability to
+    capture the underlying patterns in the data.
+
+## SVM's Objective Function and Optimaztion
+
+The objective function that SVM optimizes is a combination of
+maximizingthe margin and minimizing the classification error. This is
+achievedthrough the minimization of the following objective function:
+$$min_{w, b} \frac{1}{2} \|w\|^2 + C \sum_{i=1}^{n} \xi_i$$ Subject to
+the constraints:
+$$y_i (w^T x_i + b) \geq 1 - \xi_i \quad \text{and} \quad \xi_i \geq 0 \quad \text{for all } i$$
+where $w$ is the weight vector, $b$ is the bias term, $C$ is
+theregularization parameter, $\xi_i$ are the slack variables
+representingthe degree of misclassification of the $i$-th data point,
+and $y_i$ arethe class labels.
+
+-   <div>
+
+    ### **Hinge Loss**
+
+    </div>
+
+-   The hinge loss function is used in SVM to penalize
+    misclassifications. It is defined as: **Hinge loss** =
+    $\max(0, 1 - y_i (w^T x_i + b))$ The hinge loss is zero for
+    correctly classified points that are outside the margin, and it
+    increases linearly for points that are on the wrong side of the
+    hyperplane or within the margin.
+
+-   The optimization of the objective function involves finding the
+    values of $w$ and $b$ that minimize the function, subject to the
+    constraints. This is typically done using quadratic programming
+    techniques.
+
+# Objective
+
+The main objective of this project is to utilize the Support Vector
+Machine (SVM) algorithm to effectively predict customer churn at ABC
+Multinational Bank. This predictive model aims to identify key
+indicators that signal the likelihood of customers opting to leave the
+bank. By understanding these indicators, the bank can deploy targeted
+interventions to improve customer satisfaction and retention.
+Ultimately, this effort will enable ABC Multinational Bank to take
+proactive measures in retaining valuable customers, thereby stabilizing
+their customer base and enhancing long-term business sustainability.
+
+# Analysis and Modelling
+
+## Data Description
+
+The
+[dataset](https://www.kaggle.com/datasets/rangalamahesh/bank-churn/data)
+utilized in this project was sourced from Kaggle, a platform known for
+providing a wide range of high-quality datasets. The attributes of
+dataset are: \## Data Preprocessing
+
+| Column Name        | Description                                                                        |
+|--------------------------|----------------------------------------------|
+| `customer_id`      | A unique identifier for each customer, not used in the analysis.                   |
+| `credit_score`     | A numerical representation of the customer's creditworthiness.                     |
+| `country`          | The country in which the customer resides.                                         |
+| `gender`           | The gender of the customer (e.g., male, female).                                   |
+| `age`              | The age of the customer in years.                                                  |
+| `tenure`           | The number of years the customer has been with the bank.                           |
+| `balance`          | The current balance in the customer's account.                                     |
+| `products_number`  | The number of products the customer has with the bank.                             |
+| `credit_card`      | Indicates whether the customer has a credit card with the bank.                    |
+| `active_member`    | Indicates whether the customer is an active member.                                |
+| `estimated_salary` | The estimated annual salary of the customer.                                       |
+| `churn`            | The target variable, indicating customer churn (1 for churned, 0 for not churned). |
+
+## Exploratory Data Analysis
+
+::: panel-tabset
+```{r}
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+#install.packages("corrplot")
+library(corrplot)
+library(caret)
+library(smotefamily)
+library(ROSE)
+library(caret)
+library(DMwR)
+library(e1071)
+library(pROC)
+library(doParallel)
+library(foreach)
+library(randomForest)  # For Random Forest
+library(xgboost)
+df <- read.csv("dataset/train.csv")
+```
+
+## Data dimesions {.hscroll .scrollable}
+
+This dataset consists of 14 columns and 165034 rows.
+
+```{r}
+dim(df)
+```
+
+## Summary Statistics
+
+```{r}
+summary(select(df, CreditScore, Age, Tenure, Balance, NumOfProducts, EstimatedSalary))
+```
+
+-   **Credit Score:** Ranges from 350 to 850, with a median of 659,
+    indicating a mid-range creditworthiness among
+
+-   **Age:** Customers' ages range from 18 to 92 years, with a median
+    age of 37, suggesting a predominantly middle-aged clientele.
+
+-   **Tenure:** Tenure with the bank varies from 0 to 10 years, with a
+    median of 5 years, showing that customers are fairly evenly
+    distributed in terms of loyalty.
+
+-   **Balance:** Account balances range up to \$250,898, but the median
+    balance is 0, indicating that many customers maintain low or no
+    balances.
+
+-   **Number of Products:** Most customers have between 1 and 2 banking
+    products, with a median of 2 products per customer.
+
+-   **Estimated Salary:** Salaries vary widely, up to \$199,992.48, with
+    a median of \$117,948, reflecting a broad spectrum of income levels
+    among the bank's clientele.
+
+## Null Values
+
+```{r}
+colSums(is.na(df))
+```
+
+There are no null values in the dataset.
+
+## Categorical Variables
+
+```{r}
+sapply(df[,c('Geography', 'Gender', 'HasCrCard', 'IsActiveMember', 'Exited')], function(x) length(unique(x)))
+```
+
+-   **Geography:** Geography column have 3 uniques values Framce,
+    Germany, Spain
+
+-   **Gender:** Gender column have 2 unique values Male, Female
+
+-   **IsActiveMember:** Column consists of 2 unique values yes and no
+
+-   **HasCrCard:** Column consists o 2 unique values yes or no
+    indicating is user have credit card or not.
+
+-   **Exited:** This is a target column which indicates weather the
+    customer is exited the bank or not
+:::
+
+## Data Visualization
+
+::: panel-tabset
+## Age Distribution {.hscroll .scrollable}
+
+```{r}
+ggplot(df, aes(x = Age)) + geom_histogram(binwidth = 5, fill = "blue", color = "black")
+```
+
+**Observations:**
+
+The largest concentration of customers falls within the 30 to
+40-year-old range, indicating that the majority of customers are in
+their early to mid-career stages.
+
+There is a significant drop in frequency as age increases, especially
+beyond 50 years. This suggests that the customer base skews younger.
+
+The distribution is right-skewed, meaning there are fewer older
+customers (those over 60) compared to younger customers.
+
+There is a small number of customers in the youngest age bracket (under
+25 years) and the oldest (over 75 years).
+
+## Geographical Variation in Product Distribution
+
+```{r}
+ggplot(df, aes(x = Geography, fill = as.factor(NumOfProducts))) + geom_bar(position = "dodge")
+```
+
+**Observations:**
+
+France has the highest count of customers using one product, followed
+closely by those using two products. The number of customers using three
+and four products is significantly lower.
+
+Germany shows a similar pattern to France with one and two products
+being the most common among customers. However, the count for one
+product is notably lower than in France, whereas the count for two
+products is slightly higher.
+
+Spain's pattern mirrors that of France and Germany, with one product
+being the most common, followed by two products. Again, three and four
+products are used by a considerably smaller number of customers.
+
+## Churn Rate by Geography
+
+```{r}
+churn_by_country <- df %>%
+  group_by(Geography) %>%
+  summarise(
+    Total_Customers = n(),
+    Churned_Customers = sum(Exited),
+    Churn_Rate = (sum(Exited) / n()) * 100
+  )
+
+ggplot(churn_by_country, aes(x = Geography, y = Churn_Rate, fill = Geography)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = round(Churn_Rate, 2)), vjust = -0.3) +
+  labs(title = "Churn Rate by Country",
+       x = "Geography",
+       y = "Churn Rate (%)") +
+  theme_minimal() +
+theme(legend.title = element_blank(),
+        plot.title = element_text(hjust = 0.5))
+```
+
+**Observations:**
+
+The highest churn rate is in Germany(37.9%) followed by Spain(17.22%)
+and least in France(16.53%)
+
+## Correlation Plot
+
+```{r}
+corr_matrix <- cor(select(df, CreditScore, Age, Tenure, Balance, NumOfProducts, EstimatedSalary))
+corrplot(corr_matrix, method = "circle")
+```
+
+**Observations:**
+
+There seems to be a noticeable positive correlation between Age and
+Balance, and a negative correlation between NumOfProducts and Balance.
+:::
+
+## Data preparation for modelling
+
+::: panel-tabset
+## One Hot & Label Encoding {.hscroll .scrollable}
+
+**One Hot Encoding:** As geography is categorical column so we have
+performed one hot encoding to convert in to numerical coulmns for each
+value type.
+
+**Label Encoding:** Peformed Label encoding on Gender and Exited column
+to convert them to numerical columns.
+
+## Data Splitting & Handling Imbalance.
+
+We split our data into training and testing sets using 70-30 rule to
+evaluate the performance of our models on unseen data.
+
+To address class imbalance in our target variable, we employed the
+Synthetic Minority Over-sampling Technique (SMOTE), which helped create
+a more balanced distribution of classes
+
+## Data Normalization.
+
+Normalization is a crucial preprocessing step that helps in
+standardizing the data values within a specific range, typically zero
+mean and unit variance. This is particularly important for algorithms
+that assume data is normally distributed, or for those that are
+sensitive to the scale of the input features, such as Support Vector
+Machines or k-nearest neighbors.
+
+In normalization we have calculated the mean and standard deviation for
+selected numerical columns in the training data, using the apply
+function in R to avoid data leakage from the test set. The training data
+is then standardized by subtracting the mean and dividing by the
+standard deviation for each column, a method known as Z-score
+normalization. This same scaling approach is applied to the test set to
+ensure both datasets are on a comparable scale, facilitating more
+accurate model training and evaluation.
+:::
+
+## Statistical Modelling
+
+In this modeling phase, two different machine learning models are
+trained for a classification task using the caret package in R. The
+models include Support Vector Machine (SVM) with a radial basis function
+kernel and the Random Forest model.
+
+The target variable Exited is converted to a factor to ensure that it is
+treated as a categorical variable for classification. A consistent seed
+(set.seed(123)) is set before training each model to ensure
+reproducibility of the results.
+
+The trainControl function is used to set up the training control
+parameters, specifying 5-fold cross-validation (method = "cv") to assess
+the performance of the models.
+
+For the SVM model, data preprocessing steps (preProcess = c("center",
+"scale")) are included to center and scale the features, which is often
+necessary for SVM models to perform well.
+
+Each model is trained on the train_balanced dataset using the train
+function from the caret package, with the model type specified by the
+method parameter ("svmRadial" for SVM and "rf" for Random Forest).
+
+The trained models are tested on Test set and compared the performances
+of both models
+
+# Results
+
+| Metric                    | SVM    | Random Forest |
+|---------------------------|--------|---------------|
+| Accuracy                  | 79.52% | 83.38%        |
+| Kappa                     | 0.494  | 0.5375        |
+| Sensitivity               | 79.11% | 86.48%        |
+| Specificity               | 81.09% | 71.70%        |
+| Positive Predictive Value | 94.02% | 91.99%        |
+| Negative Predictive Value | 50.82% | 58.54%        |
+| Balanced Accuracy         | 80.10% | 79.09%        |
+| AUC-ROC                   | 0.801  | 0.791         |
+
+# Conclusion
+
+In this analysis of bank customer churn prediction, the Support Vector
+Machine (SVM) model has shown promising results, particularly in terms
+of specificity (81.09%) and positive predictive value (94.02%). These
+metrics are crucial in the banking context, as they indicate the model's
+accuracy in correctly identifying loyal customers (specificity) and its
+reliability in flagging potential churners (positive predictive value).
+Additionally, the SVM model's highest AUC-ROC score of 0.801 underscores
+its effectiveness in distinguishing between customers who are likely to
+churn and those who are not across various decision thresholds.
+
+Although the Random Forest model exhibited the highest overall accuracy
+(83.38%) and kappa score (0.5375), its lower specificity and negative
+predictive value compared to the SVM model suggest it may produce more
+false positives, leading to misallocated retention efforts.
+
+# Thank You {.center}
