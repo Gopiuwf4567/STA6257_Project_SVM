@@ -25,7 +25,7 @@ editor:
     wrap: 72
 ---
 
-## Introduction
+# Introduction
 
 Support Vector Machines (SVMs) are powerful supervised learning models
 used for both classification and regression tasks. By constructing a
@@ -48,7 +48,7 @@ hyperplane in a scenario where data is linearly separable.**Image B**
 illustrates data that is not linearly separable in its original space
 but can be tackled by SVM through the use of a kernel function.
 
-## Methodology
+# Methodology
 
 -   Support Vector Machines (SVMs) serve as a robust methodology for
     binary classification by creating a hyperplane which acts as a
