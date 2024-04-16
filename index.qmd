@@ -20,7 +20,7 @@ editor:
     wrap: 72
 ---
 
-[Slides](https://gopiuwf4567.github.io/STA6257_Project_SVM/Customer_Churn_Analysis_SVM_Presentation.html#/title-slide)
+[Slides](Customer_Churn_Analysis_SVM_Presentation.html)
 
 ## Introduction
 
