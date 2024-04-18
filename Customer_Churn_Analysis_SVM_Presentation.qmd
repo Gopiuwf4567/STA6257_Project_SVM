@@ -328,8 +328,8 @@ We can see there is significant imbalance in data this is addressed during model
 performed one hot encoding to convert in to numerical coulmns for each
 value type.
 
-**Label Encoding:** Peformed Label encoding on Gender and Exited column
-to convert them to numerical columns.
+**Label Encoding:** Peformed Label encoding on Gender column
+to convert it to numerical column.
 
 ## Data Splitting & Handling Imbalance.
 
