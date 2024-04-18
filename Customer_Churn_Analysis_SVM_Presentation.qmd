@@ -43,55 +43,29 @@ falling on either side of the hyperplane can be attributed to different
 classes. Also, the dimension of the hyperplane depends upon the number
 of features.
 
-\- **Image A** shows a clear linear separation, demonstrating the SVM
-hyperplane in a scenario where data is linearly separable.**Image B**
-illustrates data that is not linearly separable in its original space
-but can be tackled by SVM through the use of a kernel function.
+**Image A** Shows a clear linear separation, demonstrating the SVM hyperplane in a scenario where data is linearly        separable.
+
+**Image B** Illustrates data that is not linearly separable in its original space but can be tackled by SVM through the   use of a kernel function.
 
 # Methodology
 
--   Support Vector Machines (SVMs) serve as a robust methodology for
-    binary classification by creating a hyperplane which acts as a
-    decision boundary between two classes. This hyperplane is determined
-    mathematically by the equation $w^T.x +b=0$, where $w$ is the weight
-    vector perpendicular to the hyperplane, and $b$ is the bias,
-    shifting the hyperplane away from the origin.
+Support Vector Machines (SVMs) serve as a robust methodology for binary classification by creating a hyperplane which acts as a decision boundary between two classes. This hyperplane is determined mathematically by the equation $w^T.x +b=0$, where $w$ is the weight vector perpendicular to the hyperplane, and $b$ is the bias,shifting the hyperplane away from the origin.
 
--   <div>
+**Kernel Function in SVM**
 
-    ### **kernel function in SVM**
+In Support Vector Machines (SVM), the kernel function plays a crucial role in transforming the input feature space into a higher-dimensional space where the data can be linearly separated. This is particularly useful in cases where the data is not linearly separable in its original space. The kernel function computes the dot product between the feature vectors in this higher-dimensional space without explicitly mapping the vectors into that space, which is known as the "kernel trick."
 
-    </div>
+**Common types of kernel functions include:**
 
--   In Support Vector Machines (SVM), the kernel function plays a
-    crucial role in transforming the input feature space into a
-    higher-dimensional space where the data can be linearly separated.
-    This is particularly useful in cases where the data is not linearly
-    separable in its original space. The kernel function computes the
-    dot product between the feature vectors in this higher-dimensional
-    space without explicitly mapping the vectors into that space, which
-    is known as the "kernel trick."
+**Linear Kernel**: $K(w,b)=w^Tx+b$. This is the simplest form of the kernel, used when the data is linearly separable.
 
--   **Common types of kernel functions include:**
+**Polynomial Kernel**: $K(w, b) = (1 + w^T.x b)^d$. This kernel maps the input features into a polynomial feature space, allowing for polynomial decision boundaries.
 
--   **Linear Kernel**: $K(w,b)=w^Tx+b$. This is the simplest form of the
-    kernel, used when the data is linearly separable.
+**Radial Basis Function (RBF) Kernel**: $K(x_i, x_j) = e^{-\gamma \|x_i - x_j\|^2}$. Also known as the Gaussian kernel, it maps the features into an infinite-dimensional space, providing a lot of flexibility for non-linear decision boundaries.
 
--   **Polynomial Kernel**: $K(w, b) = (1 + w^T.x b)^d$. This kernel maps
-    the input features into a polynomial feature space, allowing for
-    polynomial decision boundaries.
+Each kernel function has its own set of parameters that need to be tuned for optimal performance. The choice of kernel function and its parameters can significantly impact the SVM model's ability to capture the underlying patterns in the data.
 
--   **Radial Basis Function (RBF) Kernel**:
-    $K(w, b) = \exp(-\gamma |w.x - b|^2)$. Also known as the Gaussian
-    kernel, it maps the features into an infinite-dimensional space,
-    providing a lot of flexibility for non-linear decision boundaries.
-
--   Each kernel function has its own set of parameters that need to be
-    tuned for optimal performance. The choice of kernel function and its
-    parameters can significantly impact the SVM model's ability to
-    capture the underlying patterns in the data.
-
-## SVM's Objective Function and Optimaztion
+## SVM's Objective Function and Optimization
 
 The objective function that SVM optimizes is a combination of
 maximizingthe margin and minimizing the classification error. This is
@@ -104,23 +78,11 @@ theregularization parameter, $\xi_i$ are the slack variables
 representingthe degree of misclassification of the $i$-th data point,
 and $y_i$ arethe class labels.
 
--   <div>
+**Hinge Loss**:
 
-    ### **Hinge Loss**
+The hinge loss function is used in SVM to penalize misclassifications. It is defined as: **Hinge loss** = $\max(0, 1 - y_i (w^T x_i + b))$ The hinge loss is zero for correctly classified points that are outside the margin, and it increases linearly for points that are on the wrong side of the hyperplane or within the margin.
 
-    </div>
-
--   The hinge loss function is used in SVM to penalize
-    misclassifications. It is defined as: **Hinge loss** =
-    $\max(0, 1 - y_i (w^T x_i + b))$ The hinge loss is zero for
-    correctly classified points that are outside the margin, and it
-    increases linearly for points that are on the wrong side of the
-    hyperplane or within the margin.
-
--   The optimization of the objective function involves finding the
-    values of $w$ and $b$ that minimize the function, subject to the
-    constraints. This is typically done using quadratic programming
-    techniques.
+The optimization of the objective function involves finding the values of $w$ and $b$ that minimize the function, subject to the constraints. This is typically done using quadratic programming techniques.
 
 # Objective
 
@@ -190,33 +152,6 @@ This dataset consists of 14 columns and 165034 rows.
 dim(df)
 ```
 
-## Summary Statistics
-
-```{r}
-summary(select(df, CreditScore, Age, Tenure, Balance, NumOfProducts, EstimatedSalary))
-```
-
--   **Credit Score:** Ranges from 350 to 850, with a median of 659,
-    indicating a mid-range creditworthiness among
-
--   **Age:** Customers' ages range from 18 to 92 years, with a median
-    age of 37, suggesting a predominantly middle-aged clientele.
-
--   **Tenure:** Tenure with the bank varies from 0 to 10 years, with a
-    median of 5 years, showing that customers are fairly evenly
-    distributed in terms of loyalty.
-
--   **Balance:** Account balances range up to \$250,898, but the median
-    balance is 0, indicating that many customers maintain low or no
-    balances.
-
--   **Number of Products:** Most customers have between 1 and 2 banking
-    products, with a median of 2 products per customer.
-
--   **Estimated Salary:** Salaries vary widely, up to \$199,992.48, with
-    a median of \$117,948, reflecting a broad spectrum of income levels
-    among the bank's clientele.
-
 ## Null Values
 
 ```{r}
@@ -231,18 +166,34 @@ There are no null values in the dataset.
 sapply(df[,c('Geography', 'Gender', 'HasCrCard', 'IsActiveMember', 'Exited')], function(x) length(unique(x)))
 ```
 
--   **Geography:** Geography column have 3 uniques values Framce,
-    Germany, Spain
+**Geography:** Geography column have 3 uniques values Framce,Germany, Spain.
 
--   **Gender:** Gender column have 2 unique values Male, Female
+**Gender:** Gender column have 2 unique values Male, Female.
 
--   **IsActiveMember:** Column consists of 2 unique values yes and no
+**IsActiveMember:** Column consists of 2 unique values yes and no,
 
--   **HasCrCard:** Column consists o 2 unique values yes or no
-    indicating is user have credit card or not.
+**HasCrCard:** Column consists o 2 unique values yes or no indicating is user have credit card or not.
 
--   **Exited:** This is a target column which indicates weather the
-    customer is exited the bank or not
+**Exited:** This is a target column which indicates weather the customer is exited the bank or not.
+
+## Summary Statistics
+
+```{r}
+summary(select(df, CreditScore, Age, Tenure, Balance, NumOfProducts, EstimatedSalary))
+```
+
+**Credit Score:** Ranges from 350 to 850, with a median of 659,indicating a mid-range creditworthiness among
+
+**Age:** Customers' ages range from 18 to 92 years, with a median age of 37, suggesting a predominantly middle-aged       clients.
+
+**Tenure:** Tenure with the bank varies from 0 to 10 years, with a median of 5 years, showing that customers are fairly   evenly distributed in terms of loyalty.
+
+**Balance:** Account balances range up to \$250,898, but the median balance is 0, indicating that many customers          maintain low or no balances.
+
+**Number of Products:** Most customers have between 1 and 2 banking products, with a median of 2 products per customer.
+
+**Estimated Salary:** Salaries vary widely, up to \$199,992.48, with a median of \$117,948, reflecting a broad spectrum   of income levels among the bank's clientele.
+
 :::
 
 ## Data Visualization
@@ -268,6 +219,21 @@ customers (those over 60) compared to younger customers.
 
 There is a small number of customers in the youngest age bracket (under
 25 years) and the oldest (over 75 years).
+
+## Account Balance Comparison: Exited vs. Retained Customers
+```{r}
+ggplot(df, aes(x = as.factor(Exited), y = Balance)) + geom_boxplot()
+```
+
+**Observations**:
+
+The y-axis represents the balance on customer accounts, which seems to range from 0 to a bit over 250,000.
+
+Both boxes have a similar interquartile range (IQR), which is the range between the first quartile (25th percentile) and the third quartile (75th percentile), represented by the height of the boxes. This suggests that the middle 50% of balances are similarly distributed between both groups.
+
+The median, indicated by the line within each box, is roughly at the same level for both groups, suggesting that the central tendency of balance is similar regardless of whether the customer has exited or not.
+
+The boxplot shows no apparent outliers, as there are no data points beyond the whiskers which represent 1.5 times the interquartile range.
 
 ## Geographical Variation in Product Distribution
 
@@ -317,6 +283,15 @@ theme(legend.title = element_blank(),
 The highest churn rate is in Germany(37.9%) followed by Spain(17.22%)
 and least in France(16.53%)
 
+## Churn Analysis: Age vs. Credit Score
+```{r}
+ggplot(df, aes(x = Age, y = CreditScore , color = as.factor(Exited))) + geom_point()
+```
+
+**Observations**:
+
+Both exited and non-exited customers are found across the entire range of Credit Scores and Age, but there is a noticeable density of exited customers (blue dots) in the middle age range, particularly between ages 40 and 50.
+
 ## Correlation Plot
 
 ```{r}
@@ -328,6 +303,20 @@ corrplot(corr_matrix, method = "circle")
 
 There seems to be a noticeable positive correlation between Age and
 Balance, and a negative correlation between NumOfProducts and Balance.
+
+## Target column distribution
+```{r}
+ggplot(df, aes(x = as.factor(Exited))) +
+  geom_bar(fill = "steelblue") +
+  labs(x = "Exited Status",
+       y = "Count") +
+  theme_minimal()
+```
+
+**Observations:**
+
+We can see there is significant imbalance in data this is addressed during model building.
+
 :::
 
 ## Data preparation for modelling
@@ -347,9 +336,7 @@ to convert them to numerical columns.
 We split our data into training and testing sets using 70-30 rule to
 evaluate the performance of our models on unseen data.
 
-To address class imbalance in our target variable, we employed the
-Synthetic Minority Over-sampling Technique (SMOTE), which helped create
-a more balanced distribution of classes
+To address the class imbalance in our target variable, we employed the ROSE package, which implements a combination of over-sampling and under-sampling techniques. This method effectively created a more balanced distribution of classes, ensuring better representation of both majority and minority groups in our dataset.
 
 ## Data Normalization.
 
@@ -372,6 +359,10 @@ accurate model training and evaluation.
 
 ## Statistical Modelling
 
+::: panel-tabset
+
+## Overview {.hscroll .scrollable}
+
 In this modeling phase, two different machine learning models are
 trained for a classification task using the caret package in R. The
 models include Support Vector Machine (SVM) with a radial basis function
@@ -386,16 +377,66 @@ The trainControl function is used to set up the training control
 parameters, specifying 5-fold cross-validation (method = "cv") to assess
 the performance of the models.
 
-For the SVM model, data preprocessing steps (preProcess = c("center",
-"scale")) are included to center and scale the features, which is often
-necessary for SVM models to perform well.
+## Cross Validation
 
-Each model is trained on the train_balanced dataset using the train
-function from the caret package, with the model type specified by the
-method parameter ("svmRadial" for SVM and "rf" for Random Forest).
+cross-validation is a statistical technique used to evaluate the performance and stability of machine learning models. In this approach, the data set is randomly partitioned into $K$ equal or nearly equal sized sub-datasets or "folds." The model is then trained and tested $K$ times, with each of the five folds used exactly once as the validation data, and the remaining four folds used for training.
 
-The trained models are tested on Test set and compared the performances
-of both models
+**Benefits of K-Fold Cross-Validation**
+
+**Reduces Overfitting**: By using different subsets of the data for training and validation, K-fold cross-validation reduces the risk of the model overfitting to a specific portion of the data.
+
+**Improves Model Generalizability**: Since the model is validated multiple times against different subsets of data, it ensures that the model performs well across various samples of the data, not just on the data it was trained on. This helps in assessing the model's ability to generalize to new, unseen data.
+
+**Efficient Use of Data**: Unlike a simple train/test split, cross-validation allows every observation in the dataset to be used for both training and validation. This is especially beneficial when dealing with limited data resources, as it maximizes the amount of training data available.
+
+**Reliable Performance Estimation**: Each data point gets to be in a test set exactly once and in a training set four times. This comprehensive involvement ensures that the performance metric you compute over the folds is more reliable and robust, as it incorporates a wider range of scenarios.
+
+**Minimizes Bias**: The random shuffling and partitioning of data into folds help minimize bias associated with the order or any potential patterns in the data collection process. This randomization helps ensure that the validation process is as impartial as possible.
+
+## SVM Model
+
+**Data Preprocessing**: Centering and scaling are crucial for SVM performance because it ensures that all features contribute equally to the distance calculations in the feature space.
+
+**Model Overview**: SVM is a powerful classification technique that works by finding a hyperplane in an N-dimensional space (N — the number of features) that distinctly classifies the data points. For non-linearly separable data, SVM uses a kernel trick to transform the data into a higher-dimensional space where a hyperplane can be used for separation.
+
+**Radial Basis Kernel Function**: The SVM model uses a Radial Basis Function (RBF) kernel to handle non-linear separation between classes. This kernel function is defined as 
+
+$$
+K(x_i, x_j) = e^{-\gamma \|x_i - x_j\|^2}
+$$
+Here, $xi$ and $xj$ are two feature vectors in the input space, γ is a parameter that defines the spread of the kernel, and $\|x_i - x_j\|^2$ is the squared Euclidean distance between the two feature vectors.
+
+After Incorporating our data columns, the SVM’s RBF kernel equation looks like below.
+
+$$
+K(x_i, x_j) = e^{-\gamma (\|CreditScore_i - CreditScore_j\|^2 + \|Age_i - Age_j\|^2 + \|Balance_i - Balance_j\|^2 + \|ProductsNumber_i - ProductsNumber_j\|^2 + \|EstimatedSalary_i - EstimatedSalary_j\|^2 + \ldots)}
+$$
+
+## Testing
+
+The trained models are tested on Test set and compared the performances of both models.
+:::
+
+## Evaluation Metrics
+
+
+
+**Accuracy**: The percentage of total customers correctly predicted as churned or not churned by the model.
+
+**Sensitivity (Recall)**: The proportion of actual churned customers that the model correctly identifies (True            Positives).
+
+**Specificity**: The proportion of customers who have not churned that the model correctly predicts as not exiting (True   Negatives).
+
+**Kappa**: The measure of agreement between the churn predictions and actual churn instances, corrected for chance        agreement.
+
+**Positive Predictive Value (Precision)**: The proportion of customers who have not churned that the model correctly      predicts as not exiting (True Negatives).
+
+**Negative Predictive Value**: The likelihood that a customer predicted to not churn by the model has indeed not          churned.
+
+**Balanced Accuracy**: An average of the model's ability to correctly identify both churned and retained customers,       crucial for datasets where churn events are less common.
+
+**AUC-ROC**: The probability that the model ranks a randomly chosen churned customer higher than a randomly chosen        customer who hasn't churned, indicating how well the model distinguishes between the two groups.
+
 
 # Results
 
